@@ -1,55 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://maimai123.github.io">
-  <title>jquery 轮播图插件教程（麦麦） | Lvy’s blog</title>
+  <title>wangEditor 在光标处插入变量 | 麦麦的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单的轮播插件，和一些大牛写的轮播是不能比的，一般简单的应用可以实现。支持淡入淡出和左右移动两种方式，支持自动轮播！ 如有转载，请注明出处。  简单的图片轮播效果图： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
+  <meta name="description" content="hello~ 项目中需要用到编辑器，寻寻觅觅找了个中国本土的wangEditor， 传说中最轻量级的编辑器。用起来毫不费力，直到某天遇到了个问题 let’s start!如有转载，请注明出处。  日常使用  123456789101112131415161718192021222324252627282930313233import Editor from &#39;wangeditor&#39;;const e">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jquery 轮播图插件教程（麦麦）">
-<meta property="og:url" content="https://maimai123.github.io/2017/12/16/banner/index.html">
-<meta property="og:site_name" content="Lvy’s blog">
-<meta property="og:description" content="简单的轮播插件，和一些大牛写的轮播是不能比的，一般简单的应用可以实现。支持淡入淡出和左右移动两种方式，支持自动轮播！ 如有转载，请注明出处。  简单的图片轮播效果图： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://github.com/maimai123/maimai123.github.io/blob/master/img/lbt.png?raw=true">
-<meta property="og:updated_time" content="2017-12-16T10:52:32.000Z">
+<meta property="og:title" content="wangEditor 在光标处插入变量">
+<meta property="og:url" content="https://maimai123.github.io/2020/03/26/wangEditor/index.html">
+<meta property="og:site_name" content="麦麦的博客">
+<meta property="og:description" content="hello~ 项目中需要用到编辑器，寻寻觅觅找了个中国本土的wangEditor， 传说中最轻量级的编辑器。用起来毫不费力，直到某天遇到了个问题 let’s start!如有转载，请注明出处。  日常使用  123456789101112131415161718192021222324252627282930313233import Editor from &#39;wangeditor&#39;;const e">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-14T07:09:09.812Z">
+<meta property="article:author" content="麦麦">
+<meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jquery 轮播图插件教程（麦麦）">
-<meta name="twitter:description" content="简单的轮播插件，和一些大牛写的轮播是不能比的，一般简单的应用可以实现。支持淡入淡出和左右移动两种方式，支持自动轮播！ 如有转载，请注明出处。  简单的图片轮播效果图： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
-<meta name="twitter:image" content="https://github.com/maimai123/maimai123.github.io/blob/master/img/lbt.png?raw=true">
   
-    <link rel="alternative" href="/atom.xml" title="Lvy’s blog" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="麦麦的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="https://github.com/maimai123/hexo-source/blob/master/source/img/logos.jpg">
+    <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#ebf1ef,#f7f9f8);
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
   </style>
   
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #137358"></div>
+<div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="https://github.com/maimai123/maimai123.github.io/blob/master/img/logos.jpg?raw=true" class="js-avatar">
+			<img src="https://tvax1.sinaimg.cn/crop.0.0.1080.1080.180/94304813ly8g0iy75xy2fj20u00u0n0a.jpg?KID=imgbed,tva&amp;Expires=1582716826&amp;ssig=74nyyHMyZV" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">麦麦</a></h1>
@@ -63,12 +62,24 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/archives">所有文章</a></li>
+				<li><a href="/archives/">所有文章</a></li>
 	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
     		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">点我搜文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
@@ -79,7 +90,9 @@
 		        
 					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/yu-ya-fei-27/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
-					<a class="mail" target="_blank" href="/15867193547@163.com" title="mail"><i class="icon-mail"></i></a>
+					<a class="bilibili" target="_blank" href="https://space.bilibili.com/57022459?from=search&seid=2536533383147677614" title="bilibili"><i class="icon-bilibili"></i></a>
+		        
+					<a class="mail" target="_blank" href="mailto:15867193547@163.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -90,14 +103,14 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #137358"></div>
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://github.com/maimai123/maimai123.github.io/blob/master/img/logos.jpg?raw=true" class="js-avatar">
+				<img src="https://tvax1.sinaimg.cn/crop.0.0.1080.1080.180/94304813ly8g0iy75xy2fj20u00u0n0a.jpg?KID=imgbed,tva&amp;Expires=1582716826&amp;ssig=74nyyHMyZV" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">麦麦</h1>
@@ -122,7 +135,9 @@
 			        
 						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/yu-ya-fei-27/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
-						<a class="mail" target="_blank" href="/15867193547@163.com" title="mail"><i class="icon-mail"></i></a>
+						<a class="bilibili" target="_blank" href="https://space.bilibili.com/57022459?from=search&seid=2536533383147677614" title="bilibili"><i class="icon-bilibili"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:15867193547@163.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -133,7 +148,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/archives">所有文章</a></li>
+					<li style="width: 50%"><a href="/archives/">所有文章</a></li>
 		        
 				</ul>
 			</nav>
@@ -148,31 +163,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-banner" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-wangEditor" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      jquery 轮播图插件教程（麦麦）
+      wangEditor 在光标处插入变量
     </h1>
   
 
         
-        <a href="/2017/12/16/banner/" class="archive-article-date">
-  	<time datetime="2017-12-16T05:44:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+        <a href="/2020/03/26/wangEditor/" class="archive-article-date">
+  	<time datetime="2020-03-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简单的轮播插件，和一些大牛写的轮播是不能比的，一般简单的应用可以实现。支持淡入淡出和左右移动两种方式，支持自动轮播！</p>
-<p><font size="1"><strong>如有转载，请注明出处。</strong></font></p>
+        <p>hello~ 项目中需要用到编辑器，寻寻觅觅找了个中国本土的wangEditor， 传说中最轻量级的编辑器。用起来毫不费力，直到某天遇到了个问题</p>
+<h1 id="let’s-start"><a href="#let’s-start" class="headerlink" title="let’s start!"></a>let’s start!</h1><p><font size=1><strong>如有转载，请注明出处。</strong></font></p>
 <blockquote>
-<p><i class="icon-cloud"></i>简单的图片轮播<br>效果图：<br><img src="https://github.com/maimai123/maimai123.github.io/blob/master/img/lbt.png?raw=true"><br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"> ;(function($)&#123;</span><br><span class="line">   $.fn.Carousel = function(options)&#123;</span><br><span class="line">     var obj = $(this);</span><br><span class="line">     var defaults = &#123;</span><br><span class="line">       <span class="string">'width'</span> : <span class="string">"100%"</span>,</span><br><span class="line">       <span class="string">'height'</span> : <span class="string">"480"</span>,</span><br><span class="line">       <span class="string">'speed'</span> : <span class="string">"1000"</span>,</span><br><span class="line">       <span class="string">'effect'</span> : <span class="string">"fade"</span>,</span><br><span class="line">       <span class="string">'delay'</span> : <span class="string">"200"</span>,</span><br><span class="line">       <span class="string">"doc"</span> : true ,</span><br><span class="line">       <span class="string">"arrow"</span> : true</span><br><span class="line">     &#125;;</span><br><span class="line">     var opts = $.extend(defaults,options);</span><br><span class="line">     // 设置容器的宽高</span><br><span class="line">     obj.css(&#123;</span><br><span class="line">       <span class="string">'width'</span>:opts.width,</span><br><span class="line">       <span class="string">'height'</span>:opts.height</span><br><span class="line">     &#125;);</span><br><span class="line">     // 设置图片的宽高和容器一致</span><br><span class="line">     obj.find(<span class="string">"img"</span>).css(&#123;</span><br><span class="line">       <span class="string">'width'</span>:opts.width,</span><br><span class="line">       <span class="string">'height'</span>:opts.height</span><br><span class="line">     &#125;);</span><br><span class="line">     //轮播图片个数 <span class="number">4</span></span><br><span class="line">     var length = obj.find(<span class="string">'li'</span>).length;</span><br><span class="line">     var str = <span class="string">""</span>;</span><br><span class="line">     obj.find(<span class="string">".wrapUl"</span>).css(&#123;<span class="string">"height"</span>:opts.height&#125;);</span><br><span class="line">     obj.find(<span class="string">".warp"</span>).css(&#123;<span class="string">'width'</span>:opts.width * length&#125;);</span><br><span class="line">     <span class="keyword">for</span>(var i = <span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">       str += <span class="string">"&lt;li&gt;&lt;/li&gt;"</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     // 如果显示小圆点</span><br><span class="line">     <span class="keyword">if</span>( opts.doc )&#123;</span><br><span class="line">       $(<span class="string">"&lt;ul class='docBox'&gt;"</span>+str+<span class="string">"&lt;/ul&gt;"</span>).insertAfter(obj.find(<span class="string">"div"</span>));</span><br><span class="line">       $(<span class="string">".docBox li:first"</span>).addClass(<span class="string">"active"</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     // 小圆点情况下，如果效果为淡入淡出</span><br><span class="line">     <span class="keyword">if</span>( opts.effect == <span class="string">'fade'</span> )&#123;</span><br><span class="line">       obj.find(<span class="string">'.warp li'</span>).css(&#123;</span><br><span class="line">         <span class="string">"position"</span>:<span class="string">'absolute'</span>,</span><br><span class="line">         <span class="string">"display"</span>:<span class="string">'none'</span></span><br><span class="line">       &#125;).first().show();</span><br><span class="line">       var ii = <span class="number">0</span>;</span><br><span class="line">       var setTime = setInterval(function()&#123;</span><br><span class="line">         obj.find(<span class="string">'.warp li'</span>).stop(false,true).fadeOut(opts.delay).eq(ii).fadeIn(opts.delay);</span><br><span class="line">         $(<span class="string">".docBox li"</span>).eq(ii).addClass(<span class="string">"active"</span>).siblings().removeClass(<span class="string">"active"</span>);</span><br><span class="line">         ii++;</span><br><span class="line">         <span class="keyword">if</span>( ii == length )&#123;</span><br><span class="line">           ii = <span class="number">0</span>;</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;,opts.speed);</span><br><span class="line">       $(<span class="string">".docBox li"</span>).on(<span class="string">"click"</span>,function()&#123;</span><br><span class="line">         clearInterval(setTime);</span><br><span class="line">         var index = $(this).index();</span><br><span class="line">         setTimeout(function()&#123;</span><br><span class="line">           obj.find(<span class="string">'.warp li'</span>).stop(false,true).fadeOut(opts.delay).eq(index).fadeIn(opts.delay);</span><br><span class="line">         &#125;,opts.delay);</span><br><span class="line">         $(this).addClass(<span class="string">"active"</span>).siblings().removeClass(<span class="string">"active"</span>);</span><br><span class="line">       &#125;);</span><br><span class="line">     &#125;</span><br><span class="line">     // 小圆点情况下，如果效果为平移</span><br><span class="line">     <span class="keyword">if</span>( opts.effect == <span class="string">'move'</span> )&#123;</span><br><span class="line">       var mm = <span class="number">0</span>;</span><br><span class="line">       var setMove = setInterval(function()&#123;</span><br><span class="line">         obj.children(<span class="string">'.warp'</span>).animate(&#123;<span class="string">"left"</span>:-(mm * opts.width)+<span class="string">"px"</span>&#125;,opts.speed);</span><br><span class="line">         $(<span class="string">".docBox li"</span>).eq(mm).addClass(<span class="string">"active"</span>).siblings().removeClass(<span class="string">"active"</span>);</span><br><span class="line">         mm = mm+<span class="number">1</span>;</span><br><span class="line">         <span class="keyword">if</span>( mm == length )&#123;</span><br><span class="line">           mm = <span class="number">0</span>;</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;,opts.speed);</span><br><span class="line">       $(<span class="string">".docBox li"</span>).on(<span class="string">"click"</span>,function()&#123;</span><br><span class="line">         clearInterval(setMove);</span><br><span class="line">         var index = $(this).index();</span><br><span class="line">         var left = index * opts.width;</span><br><span class="line">         setTimeout(function()&#123;</span><br><span class="line">           obj.children(<span class="string">'.warp'</span>).animate(&#123;<span class="string">"left"</span>:-left+<span class="string">"px"</span>&#125;,opts.speed);</span><br><span class="line">         &#125;,opts.delay);</span><br><span class="line">         $(this).addClass(<span class="string">"active"</span>).siblings().removeClass(<span class="string">"active"</span>);</span><br><span class="line">       &#125;);</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;;</span><br><span class="line"></span><br><span class="line"> &#125;)(jQuery);</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">$(<span class="string">".banner"</span>).Carousel(&#123;</span><br><span class="line">  <span class="string">'width'</span> : <span class="string">"1200"</span>,  //设置容器宽度(暂不支持自适应)</span><br><span class="line">  <span class="string">'height'</span> : <span class="string">"700"</span>, //设置容器高度</span><br><span class="line">  <span class="string">'effect'</span> : <span class="string">"move"</span>,  //值为fade为淡入淡出效果 move则为左右移动</span><br><span class="line">  <span class="string">'speed'</span> : <span class="string">"1000"</span>,  //设置左右移动速度</span><br><span class="line">  <span class="string">'delay'</span> : <span class="string">"200"</span>    //设置淡入淡出速度</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>日常使用</p>
 </blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Editor <span class="keyword">from</span> <span class="string">'wangeditor'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> elem = <span class="keyword">this</span>.editorElem; <span class="comment">// this.editorElem是dom元素</span></span><br><span class="line">  <span class="keyword">this</span>.editor = <span class="keyword">new</span> Editor(elem);</span><br><span class="line">  <span class="keyword">this</span>.editor.customConfig.menus = [</span><br><span class="line">    <span class="string">'head'</span>,</span><br><span class="line">    <span class="string">'bold'</span>,</span><br><span class="line">    <span class="string">'fontSize'</span>,</span><br><span class="line">    <span class="string">'foreColor'</span>,</span><br><span class="line">    <span class="string">'backColor'</span>,</span><br><span class="line">    <span class="string">'italic'</span>,</span><br><span class="line">    <span class="string">'link'</span>,</span><br><span class="line">    <span class="string">'list'</span>,</span><br><span class="line">    <span class="string">'underline'</span>,</span><br><span class="line">    <span class="string">'justify'</span>,</span><br><span class="line">    <span class="string">'image'</span>,</span><br><span class="line">    <span class="string">'table'</span>,</span><br><span class="line">    <span class="string">'emoticon'</span>,</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">this</span>.editor.customConfig.onchange = <span class="function">(<span class="params">html: any</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// change回调</span></span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      editData: &#123;</span><br><span class="line">        ...editData,</span><br><span class="line">        content: html</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.editor.create();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// HTML</span></span><br><span class="line">  &lt;div ref=&#123;ref =&gt; &#123; <span class="keyword">this</span>.editorElem = ref &#125;&#125;&gt;&lt;<span class="regexp">/div&gt; /</span><span class="regexp">/ 这是react的写法</span></span><br><span class="line"><span class="regexp">  &lt;div ref="editorElem" /</span>&gt; <span class="comment">// 这是vue的写法</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>下面是点击在光标处插入你需要插入的dom</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">addContent = <span class="function">(<span class="params">clickTagText: any</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.editor.cmd.do(<span class="string">'insertHTML'</span>, <span class="string">`&lt;span style="color: red;"&gt;我是标签啊&lt;/span&gt;`</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>那么问题来了！人的欲望总是不穷无尽的 怎么才能实现删除的时候 整个删除标签呢？</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用input去包裹 就能一整个删除拉，但是还是有点不好的地方 你需要去计算文字的宽度 一下我只做了中文的计算 一个中文差不多13个像素</span></span><br><span class="line"><span class="comment">/* clickTagText 是要插入的标签文字 */</span></span><br><span class="line"><span class="keyword">this</span>.editor.cmd.do(<span class="string">'insertHTML'</span>, <span class="string">`&lt;input readonly style="text-align: center;width: <span class="subst">$&#123;clickTagText.length * <span class="number">13</span>&#125;</span>px;border: none; height: 20px;color: red;" value="<span class="subst">$&#123;clickTagText&#125;</span>" /&gt;`</span>)</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="maimai123.github.io">麦麦</a></p>
 
       
@@ -187,7 +211,7 @@
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
@@ -208,6 +232,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -258,7 +293,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://maimai123.github.io/2017/12/16/banner/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://maimai123.github.io/2020/03/26/wangEditor/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -272,18 +307,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/12/16/yyf/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/01/animate/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          hexo博客搭建（麦麦）
+          在react中实现滑动到某处执行动画
         
       </div>
     </a>
   
   
-    <a href="/2017/12/16/chaping/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">进入差评后的小笔记（麦麦）</div>
+    <a href="/2020/03/18/chrome/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">简单的写一个chrome扩展程序（使用vue）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -311,36 +346,22 @@
   
   
   
-
-  
-
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<style>
-  .gitment-comment-main, .gitment-editor-main {
-    background: #fff;
-  }
-  a.gitment-comment-name, a.gitment-comment-name:visited {
-    color: #137358;
-    font-size: 18px;
-  }
-</style>
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
-var gitment = new Gitment({
-  id: "https://maimai123.github.io/2017/12/16/banner/",
-  owner: 'maimai123',
-  repo: 'maimai123.github.io',
-  oauth: {
-    client_id: 'af6a1c4b1116ca67c445',
-    client_secret: 'd54d714364afc257aa559054a82d0cb79b15b07b',
-  },
-})
-gitment.render('gitment-ctn')
+  var cloudTieConfig = {
+    url: "https://maimai123.github.io/2020/03/26/wangEditor/", 
+    sourceId: "wangEditor",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
 </script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+  
+
+  
+
   
 
 
@@ -351,8 +372,11 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 麦麦
+    		&copy; 2021 麦麦
     	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
     </div>
   </div>
 </footer>
@@ -368,8 +392,8 @@ gitment.render('gitment-ctn')
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
-		innerArchive: false,
-		showTags: false
+		innerArchive: true,
+		showTags: true
 	}
 </script>
 
@@ -384,18 +408,167 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
   <div class="tools-nav header-menu">
     
     
+      
+      
+      
+    
+      
+      
+      
+    
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">点我搜文章</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      
+        
     </ul>
   </div>
   <div class="tools-wrap">
     
-
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jq</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">extensions</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">日常</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">wechat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            3、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: false
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://www.leridy.pw" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>小雷的博客</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://www.marsmai.club/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>麦麦的博客</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;很久没写博客了&lt;br&gt;谢谢你还能来逛逛</div>
+  	  	
+    	</section>
     
   </div>
   
