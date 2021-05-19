@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://maimai123.github.io">
-  <title>麦麦的博客</title>
+  <title>用 canvas 实现泡泡龙 | 麦麦的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="麦麦的博客 生活、工作、家庭、朋友以及世界...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="麦麦的博客">
-<meta property="og:url" content="https://maimai123.github.io/index.html">
+  <meta name="description" content="今天在掘金上看到一个很有意思的，用一张图片生成泡泡龙，传送门 效果图是这样的  let’s start!如有转载，请注明出处。   先找到一张龙的剪映，要是明暗差比较大的那种，将图片绘制到canvas中  123456789101112const canvas &#x3D; document.getElementById(&#39;canvas&#39;);const ctx &#x3D; canvas.getContext(&#39;2d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 canvas 实现泡泡龙">
+<meta property="og:url" content="https://maimai123.github.io/2021/05/19/dragon/index.html">
 <meta property="og:site_name" content="麦麦的博客">
-<meta property="og:description" content="麦麦的博客 生活、工作、家庭、朋友以及世界...">
+<meta property="og:description" content="今天在掘金上看到一个很有意思的，用一张图片生成泡泡龙，传送门 效果图是这样的  let’s start!如有转载，请注明出处。   先找到一张龙的剪映，要是明暗差比较大的那种，将图片绘制到canvas中  123456789101112const canvas &#x3D; document.getElementById(&#39;canvas&#39;);const ctx &#x3D; canvas.getContext(&#39;2d">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4d686084e16d4dc88b5b17a1d7cd0e1a~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ab8c4d11d4e54e0980f0eb02b5426131~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2021-05-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-19T03:01:43.500Z">
 <meta property="article:author" content="麦麦">
+<meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4d686084e16d4dc88b5b17a1d7cd0e1a~tplv-k3u1fbpfcp-watermark.image">
   
     <link rel="alternative" href="/atom.xml" title="麦麦的博客" type="application/atom+xml">
   
@@ -160,16 +166,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-dragon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-dragon" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/19/dragon/">用 canvas 实现泡泡龙</a>
+    <h1 class="article-title" itemprop="name">
+      用 canvas 实现泡泡龙
     </h1>
   
 
@@ -220,84 +224,31 @@
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/19/dragon/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://github.com/maimai123/hexo-source/blob/master/source/img/zhifu.jpg?raw=true">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/14/error/">为啥 hexo d -g 成功了打开页面为空</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/14/error/" class="archive-article-date">
-  	<time datetime="2021-05-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>我的内心是崩溃的<br>昨天心血来潮想写个博客<br>然后部署的时候发现页面空白<br>然后我去github的仓库里看了下<br>所有html页面都是0kb也是就空的<br>这一下子我就不淡定了<br>由于本地hexo s 预览都是好的</p>
-<h2 id="尝试解决问题"><a href="#尝试解决问题" class="headerlink" title="尝试解决问题"></a>尝试解决问题</h2><p>我以为是依赖不对 删了以后重装了，结果发现没用<br>然后一顿google，一开始找出来的都是_config.yml配置不对啊之类的，发现也没用<br>然后找到了 hexo GitHub repo 的 issues，其中 关键的一个<a href="https://github.com/hexojs/hexo/issues/4267" target="_blank" rel="noopener">信息</a></p>
-<p>Update on Feb 14th, 2021: the previous reply is outdated. Hexo is compatible with Node.js 14 since version 4.2.1 released on May 14, 2020. See also #4285</p>
-<p>所以我检查了下我的 node 版本是14.x, hexo 版本是3.9.x。是node版本太高了！！！hexo 还不支持。所以我就升级了hexo的版本到 4.2.1 及以上。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>还是得多翻issue，好多解决办法都藏在issue里面~~</p>
-<p>More info: <a href="https://github.com/maimai123" target="_blank" rel="noopener">麦麦</a></p>
-
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -317,16 +268,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/14/error/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://maimai123.github.io/2021/05/19/dragon/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/05/14/error/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">为啥 hexo d -g 成功了打开页面为空</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -346,759 +356,25 @@
 
 
 
-
-  
-    <article id="post-quill" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/13/quill/">React-Quill插入视频bug 以及 图片上传oss</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/13/quill/" class="archive-article-date">
-  	<time datetime="2021-05-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>hello~ 我好像真的好久好久没写博客了，对不起父老乡亲们，人越来越懒了<br>最近项目里用到了react-quill，这个编辑器，是react对quill的封装<br>但是发现了在插入视频的时候 插入的元素不是video标签，而是一个iframe<br>且每插入一遍后悔下载一次想要插入的视频，就去找了下解决办法</p>
-<h1 id="let’s-start"><a href="#let’s-start" class="headerlink" title="let’s start!"></a>let’s start!</h1><font size=1><strong>如有转载，请注明出处。</strong></font>
-
-<blockquote>
-<p>正常用 React-Quill</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ReactQuill <span class="keyword">from</span> <span class="string">'react-quill'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [text, setText] = useState(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置toolbar</span></span><br><span class="line"><span class="keyword">const</span> toolbarContainer = [</span><br><span class="line">  [&#123; <span class="attr">size</span>: [<span class="string">'small'</span>, <span class="literal">false</span>, <span class="string">'large'</span>, <span class="string">'huge'</span>] &#125;], <span class="comment">// custom dropdown</span></span><br><span class="line">  [&#123; <span class="attr">font</span>: [] &#125;],</span><br><span class="line">  [&#123; <span class="attr">header</span>: <span class="number">1</span> &#125;, &#123; <span class="attr">header</span>: <span class="number">2</span> &#125;], <span class="comment">// custom button values</span></span><br><span class="line">  [&#123; <span class="attr">header</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="literal">false</span>] &#125;],</span><br><span class="line">  [<span class="string">'bold'</span>, <span class="string">'italic'</span>, <span class="string">'underline'</span>, <span class="string">'strike'</span>], <span class="comment">// toggled buttons</span></span><br><span class="line">  [&#123; <span class="attr">align</span>: [] &#125;],</span><br><span class="line">  [&#123; <span class="attr">color</span>: [] &#125;, &#123; <span class="attr">background</span>: [] &#125;],</span><br><span class="line">  [&#123; <span class="attr">indent</span>: <span class="string">'-1'</span> &#125;, &#123; <span class="attr">indent</span>: <span class="string">'+1'</span> &#125;], <span class="comment">// outdent/indent</span></span><br><span class="line">  [&#123; <span class="attr">direction</span>: <span class="string">'rtl'</span> &#125;], <span class="comment">// text direction</span></span><br><span class="line">  [<span class="string">'blockquote'</span>, <span class="string">'code-block'</span>],</span><br><span class="line"></span><br><span class="line">  [&#123; <span class="attr">list</span>: <span class="string">'ordered'</span> &#125;, &#123; <span class="attr">list</span>: <span class="string">'bullet'</span> &#125;],</span><br><span class="line">  [<span class="string">'image'</span>, <span class="string">'video'</span>, <span class="string">'link'</span>],</span><br><span class="line"></span><br><span class="line">  [<span class="string">'clean'</span>],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重新上传图片</span></span><br><span class="line"><span class="keyword">const</span> modules = &#123;</span><br><span class="line">  toolbar: &#123;</span><br><span class="line">    container: toolbarContainer,</span><br><span class="line">    handlers: &#123;</span><br><span class="line">      image: showImageUI,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> showImageUI = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> quillEditor = quillRef.current.getEditor();</span><br><span class="line">  <span class="keyword">const</span> input = <span class="built_in">document</span>.createElement(<span class="string">'input'</span>);</span><br><span class="line">  input.setAttribute(<span class="string">'type'</span>, <span class="string">'file'</span>);</span><br><span class="line">  input.setAttribute(<span class="string">'accept'</span>, <span class="string">'image/*'</span>);</span><br><span class="line">  input.click();</span><br><span class="line">  input.onchange = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// 获取 signature</span></span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> fetchSignature();</span><br><span class="line">      <span class="keyword">if</span> (!res.success) <span class="keyword">return</span>;</span><br><span class="line">      <span class="keyword">const</span> oss = res.data;</span><br><span class="line">      <span class="keyword">const</span> file = input.files[<span class="number">0</span>];</span><br><span class="line">      <span class="keyword">let</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">      <span class="keyword">const</span> fileName = file.name;</span><br><span class="line">      formData.append(<span class="string">'key'</span>, <span class="string">`website/<span class="subst">$&#123;oss[<span class="string">'dir'</span>]&#125;</span>/<span class="subst">$&#123;fileName&#125;</span>`</span>);</span><br><span class="line">      formData.append(<span class="string">'dir'</span>, oss[<span class="string">'dir'</span>]);</span><br><span class="line">      formData.append(<span class="string">'policy'</span>, oss[<span class="string">'policy'</span>]);</span><br><span class="line">      formData.append(<span class="string">'OSSAccessKeyId'</span>, oss[<span class="string">'accessid'</span>]);</span><br><span class="line">      formData.append(<span class="string">'success_action_status'</span>, <span class="string">'200'</span>);</span><br><span class="line">      formData.append(<span class="string">'signature'</span>, oss[<span class="string">'signature'</span>]);</span><br><span class="line">      formData.append(<span class="string">'file'</span>, file, fileName);</span><br><span class="line">      <span class="keyword">const</span> host = oss.host.replace(<span class="string">'http'</span>, <span class="string">'https'</span>);</span><br><span class="line">      <span class="comment">// 上传 oss</span></span><br><span class="line">      <span class="keyword">await</span> axios.post(host, formData);</span><br><span class="line">      <span class="keyword">const</span> url = <span class="string">`<span class="subst">$&#123;host&#125;</span>/website/<span class="subst">$&#123;oss[<span class="string">'dir'</span>]&#125;</span>/<span class="subst">$&#123;fileName&#125;</span>`</span>;</span><br><span class="line">      <span class="keyword">const</span> range = quillEditor.getSelection();</span><br><span class="line">      quillEditor.insertEmbed(range.index, <span class="string">'image'</span>, url);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(err);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为啥这边要价格setTimeout呢？因为不加的话会有抖动效果</span></span><br><span class="line"><span class="keyword">const</span> handleTextChange = <span class="function">(<span class="params">textTyped: any</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setText(textTyped);</span><br><span class="line">  &#125;, <span class="number">10</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&lt;ReactQuill</span><br><span class="line">  ref=&#123;quillRef&#125;</span><br><span class="line">  theme=<span class="string">"snow"</span></span><br><span class="line">  modules=&#123;modules&#125;</span><br><span class="line">  value=&#123;text&#125;</span><br><span class="line">  onChange=&#123;() =&gt; handleTextChange&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>修改 video 按钮</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 Quill</span></span><br><span class="line"><span class="keyword">import</span> ReactQuill, &#123; Quill &#125; <span class="keyword">from</span> <span class="string">'react-quill'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 放在组件前</span></span><br><span class="line"><span class="keyword">const</span> Video = Quill.import(<span class="string">'formats/video'</span>);</span><br><span class="line"><span class="keyword">const</span> Link = Quill.import(<span class="string">'formats/link'</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CoustomVideo</span> <span class="keyword">extends</span> <span class="title">Video</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> create(value) &#123;</span><br><span class="line">    <span class="keyword">const</span> node = <span class="keyword">super</span>.create(value);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> video = <span class="built_in">document</span>.createElement(<span class="string">'video'</span>);</span><br><span class="line">    video.setAttribute(<span class="string">'controls'</span>, <span class="literal">true</span>);</span><br><span class="line">    video.setAttribute(<span class="string">'type'</span>, <span class="string">'video/mp4'</span>);</span><br><span class="line">    video.setAttribute(<span class="string">'style'</span>, <span class="string">'width: 100%'</span>);</span><br><span class="line">    video.setAttribute(<span class="string">'src'</span>, <span class="keyword">this</span>.sanitize(value));</span><br><span class="line">    node.appendChild(video);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> sanitize(url) &#123;</span><br><span class="line">    <span class="keyword">return</span> Link.sanitize(url);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">CoustomVideo.blotName = <span class="string">'video'</span>;</span><br><span class="line">CoustomVideo.className = <span class="string">'ql-video'</span>;</span><br><span class="line">CoustomVideo.tagName = <span class="string">'DIV'</span>;</span><br><span class="line"></span><br><span class="line">Quill.register(<span class="string">'formats/video'</span>, CoustomVideo);</span><br></pre></td></tr></table></figure>
-<p>顺带说一下，用到富文本内容展示的时候 需要引入他的css<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'react-quill/dist/quill.snow.css'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://github.com/maimai123" target="_blank" rel="noopener">麦麦</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/13/quill/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-wechat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/09/wechat/">H5页面接入微信授权登录和分享</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/09/wechat/" class="archive-article-date">
-  	<time datetime="2020-05-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>h5 在微信中接入授权分享等需要引入微信的jssdk，<a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html" target="_blank" rel="noopener">地址在这</a></p>
-<p><font size=1><strong>如有转载，请注明出处。</strong></font></p>
-<h2 id="接入微信授权"><a href="#接入微信授权" class="headerlink" title="接入微信授权"></a>接入微信授权</h2><h2 id="1、分静默授权和非静默授权"><a href="#1、分静默授权和非静默授权" class="headerlink" title="1、分静默授权和非静默授权"></a>1、分<strong>静默授权</strong>和<strong>非静默授权</strong></h2><blockquote>
-<p>静默授权： scope=snsapi_base，没有弹窗，只能获取用户的openId。<br>非静默授权： scope=snsapi_userinfo，有弹框弹出需要用户手动点击确认授权。可以获取openId，用户的头像、昵称等</p>
-</blockquote>
-<h2 id="请耐心等待，麦麦会不定期更新哒"><a href="#请耐心等待，麦麦会不定期更新哒" class="headerlink" title="请耐心等待，麦麦会不定期更新哒~"></a>请耐心等待，麦麦会不定期更新哒~</h2><p>More info: <a href="https://github.com/maimai123" target="_blank" rel="noopener">麦麦</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">wechat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/09/wechat/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-animate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/animate/">在react中实现滑动到某处执行动画</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/01/animate/" class="archive-article-date">
-  	<time datetime="2020-03-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>hello~ 近日要做个官网。我打算给官网做一丢丢的动效，搜了一下wowjs挺好用的，然后又看到有个react-wow，就是把wow封装了一下，就都拿来试了一下，方法就写在下面拉。<a href="https://www.delac.io/wow/" target="_blank" rel="noopener">wow demo地址</a></p>
-<h1 id="let’s-start"><a href="#let’s-start" class="headerlink" title="let’s start!"></a>let’s start!</h1><font size=1><strong>如有转载，请注明出处。</strong></font>
-
-<blockquote>
-<p>引入react-wow的用法</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ReactWOW <span class="keyword">from</span> <span class="string">'react-wow'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在global.less中引用animate.css</span></span><br><span class="line"></span><br><span class="line">&lt;ReactWOW delay=<span class="string">'0.1s'</span> animation=<span class="string">'rollIn'</span>&gt;</span><br><span class="line">  &lt;div&gt;这里是你需要用到动画的dom&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>ReactWOW&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>引入wow的用法</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wow <span class="keyword">from</span> <span class="string">'wowjs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在global.less中引用animate.css</span></span><br><span class="line"></span><br><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> wows = <span class="keyword">new</span> wow.WOW(&#123;</span><br><span class="line">    live: <span class="literal">false</span></span><br><span class="line">  &#125;);</span><br><span class="line">  wows.init();</span><br><span class="line">&#125;, []);</span><br><span class="line"></span><br><span class="line">&lt;div className=<span class="string">"wow slideInLeft"</span> data-wow-duration=<span class="string">"2s"</span> data-wow-delay=<span class="string">"0.3s"</span>&gt;这里是你需要用到动画的dom&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="maimai123.github.io">麦麦</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/01/animate/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-wangEditor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/26/wangEditor/">wangEditor 在光标处插入变量</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/26/wangEditor/" class="archive-article-date">
-  	<time datetime="2020-03-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>hello~ 项目中需要用到编辑器，寻寻觅觅找了个中国本土的wangEditor， 传说中最轻量级的编辑器。用起来毫不费力，直到某天遇到了个问题</p>
-<h1 id="let’s-start"><a href="#let’s-start" class="headerlink" title="let’s start!"></a>let’s start!</h1><p><font size=1><strong>如有转载，请注明出处。</strong></font></p>
-<blockquote>
-<p>日常使用</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Editor <span class="keyword">from</span> <span class="string">'wangeditor'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> elem = <span class="keyword">this</span>.editorElem; <span class="comment">// this.editorElem是dom元素</span></span><br><span class="line">  <span class="keyword">this</span>.editor = <span class="keyword">new</span> Editor(elem);</span><br><span class="line">  <span class="keyword">this</span>.editor.customConfig.menus = [</span><br><span class="line">    <span class="string">'head'</span>,</span><br><span class="line">    <span class="string">'bold'</span>,</span><br><span class="line">    <span class="string">'fontSize'</span>,</span><br><span class="line">    <span class="string">'foreColor'</span>,</span><br><span class="line">    <span class="string">'backColor'</span>,</span><br><span class="line">    <span class="string">'italic'</span>,</span><br><span class="line">    <span class="string">'link'</span>,</span><br><span class="line">    <span class="string">'list'</span>,</span><br><span class="line">    <span class="string">'underline'</span>,</span><br><span class="line">    <span class="string">'justify'</span>,</span><br><span class="line">    <span class="string">'image'</span>,</span><br><span class="line">    <span class="string">'table'</span>,</span><br><span class="line">    <span class="string">'emoticon'</span>,</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">this</span>.editor.customConfig.onchange = <span class="function">(<span class="params">html: any</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// change回调</span></span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      editData: &#123;</span><br><span class="line">        ...editData,</span><br><span class="line">        content: html</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.editor.create();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// HTML</span></span><br><span class="line">  &lt;div ref=&#123;ref =&gt; &#123; <span class="keyword">this</span>.editorElem = ref &#125;&#125;&gt;&lt;<span class="regexp">/div&gt; /</span><span class="regexp">/ 这是react的写法</span></span><br><span class="line"><span class="regexp">  &lt;div ref="editorElem" /</span>&gt; <span class="comment">// 这是vue的写法</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>下面是点击在光标处插入你需要插入的dom</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">addContent = <span class="function">(<span class="params">clickTagText: any</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.editor.cmd.do(<span class="string">'insertHTML'</span>, <span class="string">`&lt;span style="color: red;"&gt;我是标签啊&lt;/span&gt;`</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>那么问题来了！人的欲望总是不穷无尽的 怎么才能实现删除的时候 整个删除标签呢？</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用input去包裹 就能一整个删除拉，但是还是有点不好的地方 你需要去计算文字的宽度 一下我只做了中文的计算 一个中文差不多13个像素</span></span><br><span class="line"><span class="comment">/* clickTagText 是要插入的标签文字 */</span></span><br><span class="line"><span class="keyword">this</span>.editor.cmd.do(<span class="string">'insertHTML'</span>, <span class="string">`&lt;input readonly style="text-align: center;width: <span class="subst">$&#123;clickTagText.length * <span class="number">13</span>&#125;</span>px;border: none; height: 20px;color: red;" value="<span class="subst">$&#123;clickTagText&#125;</span>" /&gt;`</span>)</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="maimai123.github.io">麦麦</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/26/wangEditor/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-chrome" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/18/chrome/">简单的写一个chrome扩展程序（使用vue）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/18/chrome/" class="archive-article-date">
-  	<time datetime="2020-03-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>哈哈哈 终于对chrome 扩展程序下手了，之前就看过这方面的资料，刚好这次公司要做一个简单的扩展<br>之前愚蠢的认为这个扩展只能在chrome里使用，其实除了Chrome浏览器之外，chrome 扩展程序还可以运行在所有webkit内核的国产浏览器，比如360极速浏览器、360安全浏览器、搜狗浏览器、QQ浏览器等等<br>好啦！！我们下来来学学看！</p>
-<p><a href="https://github.com/maimai123/chrome-todo" target="_blank" rel="noopener">这里是我的demo地址</a></p>
-<h1 id="let’s-start"><a href="#let’s-start" class="headerlink" title="let’s start!"></a>let’s start!</h1><p><font size=1><strong><a href="https://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html" target="_blank" rel="noopener">转载至</a></strong></font></p>
-<blockquote>
-<p>开发与调试</p>
-</blockquote>
-<p><em>Chrome插件没有严格的项目结构要求，只要保证本目录有一个<strong>manifest.json</strong>即可，也不需要专门的IDE，普通的web开发工具即可。</em></p>
-<p><em>从右上角菜单-&gt;更多工具-&gt;扩展程序可以进入 插件管理页面，也可以直接在地址栏输入 <a href="chrome://extensions">chrome://extensions</a> 访问。</em></p>
-<p><em>勾选开发者模式即可以文件夹的形式直接加载插件，否则只能安装.crx格式的文件。Chrome要求插件必须从它的Chrome应用商店安装，其它任何网站下载的都无法直接安装，所以，其实我们可以把crx文件解压，然后通过开发者模式直接加载。</em></p>
-<p><em>开发中，代码有任何改动都必须重新加载插件，只需要在插件管理页按下Ctrl+R即可，以防万一最好还把页面刷新一下。</em></p>
-<blockquote>
-<p>manifest.json</p>
-</blockquote>
-<p>这是一个Chrome插件最重要也是必不可少的文件，用来配置所有和插件相关的配置，必须放在根目录。其中，manifest_version、name、version3个是必不可少的，description和icons是推荐的。</p>
-<p>下面是我的 manifest.json<br><a href="http://chrome.cenchy.com/permission_warnings.html" target="_blank" rel="noopener">文档地址</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里就展示了一下我用到的一些配置，其他的可以查询文档哦 文档地址放在上面了</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"todo"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"manifest_version"</span>: <span class="number">2</span>, <span class="comment">// 必须是2</span></span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"chrome plugin demo"</span>,</span><br><span class="line">  <span class="string">"browser_action"</span>: &#123;</span><br><span class="line">    <span class="string">"default_icon"</span>: <span class="string">"assets/icon.png"</span>,</span><br><span class="line">    <span class="string">"default_title"</span>: <span class="string">"todo"</span>,</span><br><span class="line">    <span class="string">"default_popup"</span>: <span class="string">"index.html"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"icons"</span>:</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"16"</span>: <span class="string">"assets/icon.png"</span>,</span><br><span class="line">    <span class="string">"48"</span>: <span class="string">"assets/icon.png"</span>,</span><br><span class="line">    <span class="string">"128"</span>: <span class="string">"assets/icon.png"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"content_security_policy"</span>: <span class="string">"style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-eval'; object-src 'self' ;"</span>,</span><br><span class="line">  <span class="string">"homepage_url"</span>: <span class="string">"https://maimai123.github.io"</span>, <span class="comment">// 插件主页，不要浪费了这个免费广告位</span></span><br><span class="line">  <span class="string">"background"</span>:</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// 2种指定方式，如果指定JS，那么会自动生成一个背景页 我这边就是用的js</span></span><br><span class="line">    <span class="comment">// "page": "background.html",</span></span><br><span class="line">    <span class="string">"scripts"</span>: [<span class="string">"background.js"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"permissions"</span>: <span class="comment">// 权限申请</span></span><br><span class="line">    [</span><br><span class="line">      <span class="string">"contextMenus"</span>,</span><br><span class="line">      <span class="string">"tabs"</span>,</span><br><span class="line">      <span class="string">"notifications"</span>,</span><br><span class="line">      <span class="string">"storage"</span>,</span><br><span class="line">      <span class="string">"cookies"</span>,</span><br><span class="line">      <span class="string">"webRequest"</span>,</span><br><span class="line">      <span class="string">"webRequestBlocking"</span>,</span><br><span class="line">      <span class="string">"background"</span>,</span><br><span class="line">      <span class="string">"https://*/*"</span>,</span><br><span class="line">      <span class="string">"http://*/*"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>background:</p>
-</blockquote>
-<p><em>background是一个常驻的页面，它的生命周期是插件中所有类型页面中最长的，它随着浏览器的打开而打开，随着浏览器的关闭而关闭，所以通常把需要一直运行的、启动就运行的、全局的代码放在background里面。</em></p>
-<p><em>background的权限非常高，几乎可以调用所有的Chrome扩展API（除了devtools），而且它可以无限制跨域，也就是可以跨域访问任何网站而无需要求对方设置CORS</em></p>
-<p>*需要特别说明的是，你怎么查看你再background里面打印的东西呢，直接扩展上右击打开的可不是background哦，需要你再扩展程序页面打击背景页查看哦。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里是我的background.js 简单的获取数据</span></span><br><span class="line"><span class="keyword">let</span> url = <span class="string">'http://192.168.31.194:8002'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cookie;</span><br><span class="line"></span><br><span class="line">chrome.cookies.get(&#123; <span class="comment">// 获取cookie</span></span><br><span class="line">	url: <span class="string">'http://192.168.31.221'</span>,</span><br><span class="line">	name: <span class="string">'SESSION'</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">cookie</span>) </span>&#123;</span><br><span class="line">	cookie = cookie.value;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fetchUserInfo</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 在js上可以通过chrome.extension.getBackgroundPage().fetchUserInfo()调用到方法</span></span><br><span class="line">    <span class="keyword">return</span> fetchData(url + <span class="string">'/api/user/getUserInfo'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fetchData</span> (<span class="params">url</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      fetch(url, &#123;</span><br><span class="line">        method:<span class="string">'GET'</span>,</span><br><span class="line">        credentials: <span class="string">'include'</span>,</span><br><span class="line">        headers: &#123;</span><br><span class="line">          Authorization: <span class="string">'admin'</span>,</span><br><span class="line">          Cookie: cookie</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; data &#125; = <span class="keyword">await</span> response.json();</span><br><span class="line">        resolve(data);</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"err:"</span> + err);</span><br><span class="line">        reject(err);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>popup</p>
-</blockquote>
-<p><em>popup是点击图标时打开的一个小窗口网页，焦点离开网页就立即关闭，一般用来做一些临时性的交互。</em><br><em>在权限上和background非常类似，它们之间最大的不同是生命周期的不同，popup中可以直接通过chrome.extension.getBackgroundPage()获取background的window对象。</em></p>
-<blockquote>
-<p>如何在扩展程序中使用vue呢?</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在popup.html中直接引用 我也用了swiper 也是直接引入</span></span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"css/swiper.min.css"</span> /&gt;</span><br><span class="line">&lt;script src=<span class="string">"./js/vue.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;script src="./</span>js/swiper.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src="</span>./js/vue-awesome-swiper.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;div id="</span>app<span class="string">"&gt;</span></span><br><span class="line"><span class="string">  &lt;swiper ref="</span>mySwiper<span class="string">" :options="</span>swiperOption<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    &lt;swiper-slide v-for="</span>item <span class="keyword">in</span> list<span class="string">" :key="</span>item.date<span class="string">"&gt;</span></span><br><span class="line"><span class="string">      &lt;div class="</span>item<span class="string">" &gt;</span></span><br><span class="line"><span class="string">        &lt;div class="</span>week<span class="string">"&gt;&#123;&#123; item.week &#125;&#125;&lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="</span>day<span class="string">"&gt;&#123;&#123; new Date(item.date).getDate() &#125;&#125;&lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/swiper-slide&gt;</span></span><br><span class="line"><span class="string">  &lt;/swiper&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// js文件中实例化</span></span><br><span class="line"><span class="string">var vm = new Vue(&#123;</span></span><br><span class="line">  el:"#app",</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">let</span> self = <span class="keyword">this</span>; <span class="comment">// 用self指向this是因为直接在里面拿不到正确的this</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      swiperOption: &#123; <span class="comment">// swiper参数可以看文档哦</span></span><br><span class="line">        slidesPerView: <span class="number">3</span>,</span><br><span class="line">        spaceBetween: <span class="number">20</span>,</span><br><span class="line">        centeredSlides: <span class="literal">true</span>,</span><br><span class="line">        slideToClickedSlide:<span class="literal">true</span>,</span><br><span class="line">        on: &#123;</span><br><span class="line">          click: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> index = <span class="keyword">this</span>.swiper.clickedIndex;</span><br><span class="line">            self.handleChangeCurrent(index)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      list: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    swiper() &#123; <span class="comment">// 在方法中直接this.swiper可以拿到swiper</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.$refs.mySwiper.swiper</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeDestroy () &#123; <span class="comment">// 离开了记得销毁哦</span></span><br><span class="line">    <span class="keyword">this</span>.swiper = <span class="literal">null</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    handleChangeCurrent(index) &#123;</span><br><span class="line">      <span class="comment">// 可以在滑动的之后做一些事情</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在开发过程中我也需要了一点问题，如果你们也遇到了可以参考哦<br>1、在文件内直接写js报错</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;这里是你的代码&lt;<span class="regexp">/script&gt; /</span><span class="regexp">/ 运行到此处出错 解决办法：将代码保存为独立的js文件，然后动态引用即可。</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 下面是参考文章</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://www.oceancoder.cn/post/popup-invoke-js-error.html" target="_blank" rel="noopener">Chrome扩展popup页面使用JavaScript脚本报错: Refused to execute inline script because….</a></p>
-<blockquote>
-<p>2、Chrome Extension 中的 CSP（Content Security Policy）</p>
-</blockquote>
-<p><em>在进行Chrome拓展程序开发的时候，我们经常会遇到需要加载第三方库的情况，常见的如Jquery/Bootstrap库等,然而Chrome Extension的开发与一般网页不同，当我们在页面中加入如下代码时</em></p>
-<p><em>我们看到浏览器拒绝加载这个执行语句，因为它违反了Content Security Policy(简称CSP)机制</em></p>
-<p><em>setTimeout 等都是不允许的</em></p>
-<p><em>提示拒绝 ‘evaluate a string as JavaScript’ ，我们查阅官方文档就可以发现 eval() 函数同样是被CSP所禁止,类似的还有setTimeout(String), setInterval(String) 和new Function(String)</em></p>
-<p><em>那要怎么解决呢，官方文档提供了一种解决办法，叫做 放宽默认策略 （关于放宽默认策略更多的介绍，可以访问Content Security Policy Reference来获取），通过添加 ‘unsafe-eval’ 来实现，即在mainfest.json中加入下面代码：</em></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"content_security_policy"</span>: <span class="string">"style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-eval' https://cdn.bootcss.com; object-src 'self' ;"</span>,</span><br><span class="line"><span class="comment">// 下面是参考文章</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://blog.csdn.net/qq_21859119/article/details/78802687" target="_blank" rel="noopener">Chrome Extension 中的 CSP（Content Security Policy） 开发小记</a></p>
-<p>More info: <a href="maimai123.github.io">麦麦</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">extensions</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/18/chrome/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-react-ts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/18/react-ts/">react+ts初体验</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/18/react-ts/" class="archive-article-date">
-  	<time datetime="2020-03-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>哈哈哈 终于对react+ts下手了，其实本身也是挺反感那么严重的规范性的。但是想想这样子虽然时间花的久一点，但是好处多多啊。最后还是接受了ts！！！（小声BB：其实是因为公司要用没办法才接受的）<br>anyway！！我们下来来学学看！</p>
-<h1 id="let’s-start"><a href="#let’s-start" class="headerlink" title="let’s start!"></a>let’s start!</h1><p><font size=1><strong>如有转载，请注明出处。</strong></font></p>
-<blockquote>
-<p>在react中创建组件的形式有三种</p>
-</blockquote>
-<blockquote>
-<p>纯函数式定义的无状态组件<br>React.createClass 定义的组件（不做解释）<br>Extends React.Component 定义的组件</p>
-</blockquote>
-<p>纯函数式定义的无状态组件及类组件的到底有什么不同呢？</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// React.Component是以ES6的形式来创建react的组件的，是React目前极为推荐的创建有状态组件的方式，最终会取代React.createClass形式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> interface IProps &#123; <span class="comment">// 可以导出interface 以供其他地方也可以使用</span></span><br><span class="line">  onChange: <span class="built_in">Function</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface IState &#123;</span><br><span class="line">  visible: boolean;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span> <span class="keyword">extends</span> <span class="title">Component</span>&lt;<span class="title">IProps</span>, <span class="title">IState</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> defaultProps = &#123;</span><br><span class="line">    onChange: <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(props: IProps) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      visible: <span class="literal">true</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleChange () &#123; <span class="comment">// 推荐所有方法名都以handle或者on开头</span></span><br><span class="line">    <span class="keyword">const</span> &#123; visible &#125; = <span class="keyword">this</span>.state;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      visible: !visible</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; visible &#125; = <span class="keyword">this</span>.state;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=&#123;styles.example&#125;&gt;</span><br><span class="line">        &#123; visible ? <span class="string">'这里是React.Component创建组件的demo呀！'</span> : <span class="string">'现在看不见了吧~'</span> &#125;</span><br><span class="line">        &lt;button onClick=&#123;<span class="keyword">this</span>.handleChange&#125;&gt;开关&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>纯函数组件的特点:</p>
-</blockquote>
-<blockquote>
-<p>1、组件不会被实例化,整体渲染性能得到提升<br>2、组件不能访问this对象<br>3、组件无法访问生命周期的方法 （可以借助hooks拿到哦）<br>4、无状态组件只能访问输入的props,无副作用</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简单的，一般在页面内部会定义一些</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">DemoComponent</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello &#123;props.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 稍复杂的</span></span><br><span class="line">  interface IProps &#123;</span><br><span class="line">    name: string;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> Example: React.FC&lt;IProps&gt; = <span class="function"><span class="params">props</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> [visible, setVisible] = useState(<span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">const</span> &#123; name &#125; = props;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    useEffect (</span><br><span class="line">      () =&gt; &#123;</span><br><span class="line">        setVisible(<span class="literal">true</span>)</span><br><span class="line">      &#125;,</span><br><span class="line">      [] <span class="comment">// 空数组代表只渲染一次，同componentDidMount，有兴趣的朋友可以去看下react Hooks哦 我之前的文章里也有写</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    handleToggle () &#123; <span class="comment">// 尽量不要使用箭头函数，会导致某些参数获取不到</span></span><br><span class="line">      setVisible(!visible)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=&#123;styles.example&#125;&gt;</span><br><span class="line">        &#123; name &#125;</span><br><span class="line">        &#123; visible ? <span class="string">'这里是React.Component创建组件的demo呀！'</span> : <span class="string">'现在看不见了吧~'</span> &#125;</span><br><span class="line">        &lt;button onClick=&#123;handleToggle&#125;&gt;开关&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>react中使用富文本<br>我用的是<a href="http://www.wangeditor.com/" target="_blank" rel="noopener">wangEditor</a></p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Editor <span class="keyword">from</span> <span class="string">'wangeditor'</span>;</span><br><span class="line"></span><br><span class="line">componentDidMount() &#123; <span class="comment">// 先注册一个编辑器</span></span><br><span class="line">  <span class="keyword">const</span> &#123; content &#125; = <span class="keyword">this</span>.state;</span><br><span class="line">  <span class="keyword">const</span> elem = <span class="keyword">this</span>.editorElem;</span><br><span class="line">  <span class="keyword">this</span>.editor = <span class="keyword">new</span> Editor(elem);</span><br><span class="line">  <span class="keyword">this</span>.editor.customConfig.menus = [ <span class="comment">// 设置编辑器上面的配置项</span></span><br><span class="line">    <span class="string">'head'</span>,</span><br><span class="line">    <span class="string">'bold'</span>,</span><br><span class="line">    <span class="string">'fontSize'</span>,</span><br><span class="line">    <span class="string">'foreColor'</span>,</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">this</span>.editor.customConfig.onchange = <span class="function">(<span class="params">html: any</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      content: html</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.editor.create();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在需要填入数据的地方用一下方法就可以实现回填拉 亲测好用哦</span></span><br><span class="line"><span class="keyword">this</span>.editor.txt.html(content);</span><br><span class="line"></span><br><span class="line">&lt;div ref=&#123;ref =&gt; &#123; <span class="keyword">this</span>.editorElem = ref &#125;&#125;&gt;&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="maimai123.github.io">麦麦</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/18/react-ts/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-daily2020_1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/27/daily2020_1/">React Hooks</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/27/daily2020_1/" class="archive-article-date">
-  	<time datetime="2020-02-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <font size=1><strong>转载至<a href="https://juejin.im/post/5e53d9116fb9a07c9070da44" target="_blank" rel="noopener">伐樱大魔</a></strong></font>
-
-<h1 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h1><p><strong>为什么要使用useState？</strong><br>useState 的出现是 ： 在函数组件里面使用 class的setState，刺激!!!<br>解决了的问题是：当我们一个函数组件想要有自己维护的state的时候，不得已只能转换成class。这样很麻烦！</p>
-<p><strong>如何使用useState？</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [visible, setVisible] = useState(<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>useState踩坑知识点</strong></p>
-<p>👁重点： <strong>useState的初始值，只在第一次有效</strong></p>
-<p>我当时反正没有当回事，直到遇到了坑…</p>
-<p>举个🌰：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Child = memo(<span class="function">(<span class="params">&#123;data&#125;</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> [name, setName] = useState(data)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;div&gt;child&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">            &lt;div&gt;&#123;name&#125; --- &#123;data&#125;&lt;/</span>div&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Hook =()=&gt;&#123;</span></span><br><span class="line"><span class="regexp">    const [count, setCount] = useState(0)</span></span><br><span class="line"><span class="regexp">    const [name, setName] = useState('rose')</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    return(</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;</span></span><br><span class="line"><span class="regexp">            &lt;div&gt;</span></span><br><span class="line"><span class="regexp">                &#123;count&#125;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">            &lt;button onClick=&#123;()=&gt;setCount(count+<span class="number">1</span>)&#125;&gt;update count &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">            &lt;button onClick=&#123;()=&gt;setName('jack')&#125;&gt;update name &lt;/</span>button&gt;</span><br><span class="line">            &lt;Child data=&#123;name&#125;/&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>结论： 实践检验知识点！😭</p>
-</blockquote>
-<h1 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h1><p><strong>为什么要使用useEffect？</strong><br>useEffect 的出现是 ： 在函数组件里面使用 class的生命周期函数，还是所以函数的合体！刺激！！！</p>
-<p><strong>如何使用useEffect?</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// 你的代码...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p><strong>useEffect知识点合集</strong></p>
-<p>1.只在第一次使用的componentDidMount，可以用来请求异步数据…、</p>
-<p>useEffect最后，加了 <strong>[]</strong> 就表示只第一次执行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> users = 获取你喜欢的人的信息()</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
-<p>2.用来替代willUpdate等每次渲染都会执行的生命函数</p>
-<p>useEffect最后，不加 <strong>[]</strong> 就表示每一次渲染都执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> users = 每次渲染都获取你喜欢的人的信息()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><br>3.每次渲染都执行感觉有点费，所以：</p>
-<p>useEffect最后加 <strong>[]</strong> ，并且 <strong>[]</strong> 里面加的字段就表示，这个字段更改了，我这个effect才执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> users = （name改变了我才获取你喜欢的人的信息()）</span><br><span class="line">&#125;,[name])</span><br></pre></td></tr></table></figure><br>4.如果我们之前订阅了什么，最后在willUnmount这个生命周期里面要取消订阅，这可咋用useEffect实现啊：</p>
-<p>在effect的return里面可以做取消订阅的事<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> subscription = 获取你喜欢的人的信息()</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        我不要在喜欢你了()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure><br><strong>为什么要取消订阅？</strong><br>大家都知道，render了之后会执行重新useEffect，如果useEffect里面有一个每setInterval…那么每次render了，再次执行useEffect就会再创建一个setInterval，然后就混乱了…可以把下面案例return的内容删掉感受下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'use effect...'</span>,count)</span><br><span class="line">    <span class="keyword">const</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> setCount(count + <span class="number">1</span>), <span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span> clearInterval(timer)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>5.useEffect 里面使用到的state的值, 固定在了useEffect内部， 不会被改变，除非useEffect刷新，重新固定state的值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br><span class="line">   useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'use effect...'</span>,count)</span><br><span class="line">       <span class="keyword">const</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">'timer...count:'</span>, count)</span><br><span class="line">           setCount(count + <span class="number">1</span>)</span><br><span class="line">       &#125;, <span class="number">1000</span>)</span><br><span class="line">       <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span> clearInterval(timer)</span><br><span class="line">   &#125;,[])</span><br></pre></td></tr></table></figure></p>
-<p>6.useEffect不能被判断包裹</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br><span class="line">   <span class="keyword">if</span>(<span class="number">2</span> &lt; <span class="number">5</span>)&#123;</span><br><span class="line">   useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">'use effect...'</span>,count)</span><br><span class="line">           <span class="keyword">const</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> setCount(count +<span class="number">1</span>), <span class="number">1000</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span> clearInterval(timer)</span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>7.useEffect不能被打断<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br><span class="line">useEffect(...)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="comment">// 函数提前结束了</span></span><br><span class="line"></span><br><span class="line">useEffect(...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>还有<strong>useMemo</strong> <strong>useRef</strong>等等… 搬的太辛苦了，大家直接点击<a href="https://juejin.im/post/5e53d9116fb9a07c9070da44" target="_blank" rel="noopener">文章地址</a>去看吧 😭</p>
-<p>More info: <a href="maimai123.github.io">麦麦</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/27/daily2020_1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-daily2020" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/26/daily2020/">React中父组件通过ref调用子组件方法时报错</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/26/daily2020/" class="archive-article-date">
-  	<time datetime="2020-02-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <font size=1><strong>转载至<a href="https://segmentfault.com/a/1190000015172005?utm_source=channel-hottest" target="_blank" rel="noopener">风吹过的夏夜</a></strong></font>
-
-<p>在项目中用了dva，导致了在用Ref方式取子组件的方法时，用常用的方法报错<br>寻寻觅觅找到了解决方法</p>
-<p>接下来我会用一个简单的demo来演示这个问题是如何发生以及如何解决的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里是子组件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            value: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleAdd = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            value: <span class="keyword">this</span>.state.value + <span class="number">1</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;p&gt;&#123;<span class="keyword">this</span>.state.value&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Child</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里是父组件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    clickHandler = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.child.addHandler();</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">                &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">                    &lt;Child ref=&#123;ref =&gt; <span class="keyword">this</span>.child = ref&#125; /&gt;</span><br><span class="line">                    &lt;button onClick=&#123;<span class="keyword">this</span>.clickHandler&#125;&gt;+<span class="number">1</span>&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>div&gt;</span><br><span class="line">            &lt;<span class="regexp">/Provider&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default Father;</span></span><br></pre></td></tr></table></figure>
-<p>这样是没有问题了，但当子组件需要在Redux/dva（dva基于 redux 和 redux-saga）中读取的一个数据，那么就需要connect一下了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps, mapDispatchToProps)(Child)</span><br></pre></td></tr></table></figure>
-<p>嗯，看起来很完美，点击，然后….boom( ⊙ o ⊙ )报错了！</p>
-<p>不科学啊，说到这里相信大家都能猜出来事connect过后导致的问题，所以去官方文档翻箱倒柜一下connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])，<br>果不其然，原来connect参数有4个，所以可能是遗漏了某个参数吧，所以继续翻…<br>然后看到这样一段话：</p>
-<blockquote>
-<p>[withRef] (Boolean): If true, stores a ref to the wrapped component instance and makes it available via getWrappedInstance() method. Default value: false</p>
-</blockquote>
-<blockquote>
-<p>简单理解下，就是说connect过后export出去的不是组件本身，而是经过包装处理的组件，官方称之为wrapped component，所以默认是不将ref存储到这个包装对象里的(Default value: false)，因此只有将withRef这个参数置为true，那么Redux就会将ref存储到这个包装对象里以供使用了，并且请注意下via getWrappedInstance() method这段话，即便我们将withRef置为true但没有通过getWrappedInstance()获得原对象的ref(reference)也是不行的。所以说道这里大家也知道解决方案是什么了：</p>
-</blockquote>
-<blockquote>
-<p>1）connect导出Addition组件时候添加withRef参数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps, mapDispatchToProps, <span class="literal">null</span>, &#123;<span class="attr">withRef</span>: <span class="literal">true</span>&#125;)(Addition)</span><br></pre></td></tr></table></figure><br>2）调用addHandler方法前使用getWrappedInstance()获得原对象的ref：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.refs.addition.getWrappedInstance().addHandler()</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>啦啦啦~ 这样就好啦</p>
-<p>More info: <a href="maimai123.github.io">麦麦</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/26/daily2020/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "https://maimai123.github.io/2021/05/19/dragon/", 
+    sourceId: "dragon",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+  
+
+  
+
   
 
 
@@ -1121,8 +397,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
