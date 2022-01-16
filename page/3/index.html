@@ -45,7 +45,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="https://tvax1.sinaimg.cn/crop.0.0.1080.1080.180/94304813ly8g0iy75xy2fj20u00u0n0a.jpg?KID=imgbed,tva&amp;Expires=1582716826&amp;ssig=74nyyHMyZV" class="js-avatar">
+			<img src="https://github.com/maimai123/hexo-source/blob/master/public/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">麦麦</a></h1>
@@ -107,7 +107,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://tvax1.sinaimg.cn/crop.0.0.1080.1080.180/94304813ly8g0iy75xy2fj20u00u0n0a.jpg?KID=imgbed,tva&amp;Expires=1582716826&amp;ssig=74nyyHMyZV" class="js-avatar">
+				<img src="https://github.com/maimai123/hexo-source/blob/master/public/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">麦麦</h1>
@@ -161,6 +161,168 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-chaping" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/05/chaping/">进入差评后的小笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2018/02/05/chaping/" class="archive-article-date">
+  	<time datetime="2018-02-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>啦啦啦啦啦啦~</p>
+<p><font size=1><strong>如有转载，请注明出处。</strong></font></p>
+<h2 id="Intersting"><a href="#Intersting" class="headerlink" title="Intersting"></a>Intersting</h2><h2 id="1、Vue-filter-过滤"><a href="#1、Vue-filter-过滤" class="headerlink" title="1、Vue.filter 过滤"></a>1、Vue.filter 过滤</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">filterShoppingList: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> key = <span class="keyword">this</span>.key;</span><br><span class="line">    <span class="keyword">var</span> shoppingList = <span class="keyword">this</span>.shoppingList;</span><br><span class="line">    <span class="keyword">return</span> shoppingList.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> item.toLowerCase().indexOf(key.toLowerCase()) != <span class="number">-1</span></span><br><span class="line">    &#125;);;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2、数组对象去重（根据时间一样去重，把title合并）"><a href="#2、数组对象去重（根据时间一样去重，把title合并）" class="headerlink" title="2、数组对象去重（根据时间一样去重，把title合并）"></a>2、数组对象去重（根据时间一样去重，把title合并）</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [</span><br><span class="line">  &#123;</span><br><span class="line">    time:<span class="string">'211521'</span>,</span><br><span class="line">    title:[</span><br><span class="line">      <span class="string">'111111111111111'</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    time:<span class="string">'23333333333'</span>,</span><br><span class="line">    title:[</span><br><span class="line">      <span class="string">'我有一只小毛驴'</span>,</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    time:<span class="string">'23333333333'</span>,</span><br><span class="line">    title:[</span><br><span class="line">      <span class="string">'我重来也不骑'</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    time:<span class="string">'23333333333'</span>,</span><br><span class="line">    title:[</span><br><span class="line">      <span class="string">'有一天我心血来潮'</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    time:<span class="string">'23werwef3'</span>,</span><br><span class="line">    title:[</span><br><span class="line">      <span class="string">'111111111111111'</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">var</span> result = [], hash = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;arr.length; i++) &#123; <span class="comment">//去重</span></span><br><span class="line">  <span class="keyword">var</span> elem = arr[i].time;</span><br><span class="line">  <span class="keyword">if</span> (!hash[elem]) &#123;</span><br><span class="line">      result.push(arr[i]);</span><br><span class="line">      hash[elem] = <span class="literal">true</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j&lt;result.length; j++) &#123; <span class="comment">//填数据</span></span><br><span class="line">      <span class="keyword">if</span>(result[j].time == elem)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(arr[i].title)</span><br><span class="line">        result[j].title.push(arr[i].title[<span class="number">0</span>])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2018/02/05/chaping/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/02/05/chaping/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-react-daily" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/30/react-daily/">react日常小难题整理</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/30/react-daily/" class="archive-article-date">
+  	<time datetime="2017-12-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>初学react，在码代码过程中会遇到对大牛来说听起来愚蠢的问题。没错！这篇文章就是来整理这些愚蠢的问题的~ （嘿嘿嘿）下次可不要再丢人啦~</p>
+<p><font size=1><strong>如有转载，请注明出处。</strong></font></p>
+<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h2 id="1、style问题在react中"><a href="#1、style问题在react中" class="headerlink" title="1、style问题在react中"></a>1、style问题在react中</h2><blockquote>
+<p>大兄弟~ 你是否想在react中使用行内样式<br>如： style=”height:30px”<br>然后你仰望星空 然后你开始怀疑自己，难道是我写错了？哈哈 其实是在react中的写法不太一样而已~~~<br>看！写成这样就没错列~<br><img src="https://github.com/maimai123/maimai123.github.io/blob/master/img/style.png?raw=true" /></p>
+</blockquote>
+<h2 id="2、从后台拿到数组遍历成字符串类型的标签，如何被浏览器识别"><a href="#2、从后台拿到数组遍历成字符串类型的标签，如何被浏览器识别" class="headerlink" title="2、从后台拿到数组遍历成字符串类型的标签，如何被浏览器识别"></a>2、从后台拿到数组遍历成字符串类型的标签，如何被浏览器识别</h2><blockquote>
+<p>在用antd表格的时候，我曾遇到过这个问题。后台传过来的是数组，遍历成n个带url的a标签 显示在表格的操作栏<br>一开始我先将数组遍历加入字符串a标签放入一个新数组 最后将此数组转成字符串 return出去变成了字符串 没有被浏览器识别 看下图<br><img src="https://github.com/maimai123/maimai123.github.io/blob/master/img/return.png?raw=true" /><br>后来找到了解决方法 如下 (ps:千万不要忘了给数组加上key，否则控制台会提示哦)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> files.map(<span class="function">(<span class="params">file,index</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;<span class="name">Icon</span> <span class="attr">type</span>=<span class="string">"paper-clip"</span> /&gt;</span> &#123;file&#125; <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/12/30/react-daily/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/30/react-daily/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-react-table" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -737,7 +899,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 麦麦
+    		&copy; 2022 麦麦
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -865,6 +1027,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssr</a>
               </li>
             
             <div class="clearfix"></div>

@@ -45,7 +45,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="https://tvax1.sinaimg.cn/crop.0.0.1080.1080.180/94304813ly8g0iy75xy2fj20u00u0n0a.jpg?KID=imgbed,tva&amp;Expires=1582716826&amp;ssig=74nyyHMyZV" class="js-avatar">
+			<img src="https://github.com/maimai123/hexo-source/blob/master/public/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">麦麦</a></h1>
@@ -107,7 +107,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://tvax1.sinaimg.cn/crop.0.0.1080.1080.180/94304813ly8g0iy75xy2fj20u00u0n0a.jpg?KID=imgbed,tva&amp;Expires=1582716826&amp;ssig=74nyyHMyZV" class="js-avatar">
+				<img src="https://github.com/maimai123/hexo-source/blob/master/public/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">麦麦</h1>
@@ -161,6 +161,204 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-ssr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/15/ssr/">服务端渲染原理初探</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/15/ssr/" class="archive-article-date">
+  	<time datetime="2022-01-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>服务端渲染到底是怎么回事呢？为什么要做服务端渲染，有什么好处？带着这些问题，我们来看看服务端渲染的真面目吧~</p>
+<p>有很多时候，我们做项目的时候，接入服务端渲染都是用一些应用框架，如react的Next.js， vue的Nuxt.js、vue-server-renderer插件，那么本质是什么呢？<br>没有深入了解之前，我知道是通过renderToString()方法，用来将组件输出成 HTML 字符串，node作为中间层，把html字符串返回给浏览器，那么具体实现是怎么样呢？以下以 React 项目举例。</p>
+<h1 id="let’s-start"><a href="#let’s-start" class="headerlink" title="let’s start!"></a>let’s start!</h1><font size=1><strong>如有转载，请注明出处。</strong></font>
+
+<blockquote>
+<p>为什么要做服务端渲染</p>
+</blockquote>
+<ol>
+<li>利于SEO，搜索引擎爬虫工具可以查看到完全渲染的页面，有利于排到搜索引擎的前面。</li>
+<li>提高首屏加载速度，无需等待所有的js加载执行完，用户可以更快地看到完整的页面。<br>在 SPA 单页模式下，所有的数据请求和 Dom 渲染都在浏览器端完成，所以当我们第一次访问页面的时候很可能会存在“白屏”等待，而服务端渲染所有数据请求和 html内容已在服务端处理完成，浏览器收到的是完整的 html 内容，可以更快的看到渲染内容。</li>
+</ol>
+<p>虽然服务端渲染有一说好处，但也有缺点</p>
+<ol>
+<li>需要在node server环境上运行，而完全静态的SPA可以在任何静态文件服务器上运行。</li>
+<li>更多的服务端负载。</li>
+</ol>
+<p>因此在使用ssr之前要权衡下是否真的需要它，取决于对首屏加载时间的要求和SEO优化。服务端渲染适合特别依赖搜索引擎流量或对首屏时间有特殊要求的项目，如官网等。</p>
+<blockquote>
+<p>如何做服务端渲染？</p>
+</blockquote>
+<p>在前文中提到利用renderToString()方法可以有能力将虚拟dom编译成 HTML 字符串，但我们在开发过程中UI有一些事件绑定，编译出来的 HTML 事件绑定无效，因为 renderToString 并没有做事件相关的处理，因此返回给浏览器的内容不会有事件绑定。那么怎么解决这个问题呢？</p>
+<p>这就需要【同构】了。所谓同构，通俗的讲，就是服务端渲染完成页面结构，浏览器端渲染完成事件绑定。即后端渲染和前端交互。</p>
+<p>同构的流程如下：<br>【服务端运行React代码生成HTML】 =&gt; 【发送HTML给浏览器】 =&gt; 【浏览器显示内容】 =&gt; 【浏览器加载js文件】 =&gt; 【执行js并接管页面的操作】</p>
+<p>接下来让我们实践一下吧~</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br><span class="line">npm i react express react-dom react-router-dom</span><br></pre></td></tr></table></figure>
+<p>新建server.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> React = <span class="built_in">require</span>(<span class="string">'react'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123;renderToString&#125; = <span class="built_in">require</span>(<span class="string">'react-dom/server'</span>);</span><br><span class="line"><span class="keyword">const</span> App = <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">PureComponent</span></span>&#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    <span class="keyword">return</span> React.createElement(<span class="string">"h1"</span>,<span class="literal">null</span>,<span class="string">"Hello World"</span>);;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">app.get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> content = renderToString(React.createElement(App));</span><br><span class="line">  res.send(content);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<p>node server.js启动localhost:3000就能看到浏览器输出的 Hello World。<br>打开源代码也可以看到相对应的Dom。如果是客户端渲染的话，是无法看到了Hello World的。</p>
+<p>上面的代码我们不能使用jsx,也不能使用es6的import、export语法，<br>所以我们加入webpack, 修改webpack配置, 引入babel。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack babel-loader @babel/core @babel/preset-react @babel/preset-env --save-dev</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新增.babelrc文件，写入</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"presets"</span>: [<span class="string">"@babel/preset-env"</span>, <span class="string">"@babel/preset-react"</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新建webpack文件 build/webpack.serve.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> nodeExternals = <span class="built_in">require</span>(<span class="string">'webpack-node-externals'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry:&#123;</span><br><span class="line">    index:path.resolve(__dirname,<span class="string">'../server.js'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  mode:<span class="string">'development'</span>,</span><br><span class="line">  target:<span class="string">'node'</span>,</span><br><span class="line">  output:&#123;</span><br><span class="line">    filename:<span class="string">'[name].js'</span>,</span><br><span class="line">    path:path.resolve(__dirname,<span class="string">'../dist/server'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  externals:[nodeExternals()],</span><br><span class="line">  resolve:&#123;</span><br><span class="line">    alias:&#123;</span><br><span class="line">      <span class="string">'@'</span>:path.resolve(__dirname,<span class="string">'../src'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    extensions:[<span class="string">'.js'</span>, <span class="string">'.jsx'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>:&#123;</span><br><span class="line">    rules:[&#123;</span><br><span class="line">      test:<span class="regexp">/\.js|.jsx$/</span>, <span class="comment">// 注意要配置jsx结尾的文件，不然解析不了jsx</span></span><br><span class="line">      use:<span class="string">'babel-loader'</span>,</span><br><span class="line">      exclude:<span class="regexp">/node_modules/</span></span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在package.json中添加script<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"build"</span>: <span class="string">"npm-run-all --parallel build:* -l -n"</span>,</span><br><span class="line">  <span class="string">"build:server"</span>: <span class="string">"webpack --config build/webpack.server.js --watch"</span>,</span><br><span class="line">  <span class="string">"build:client"</span>: <span class="string">"webpack --config build/webpack.client.js --watch"</span>,</span><br><span class="line">  <span class="string">"server"</span>: <span class="string">"nodemon dist/server/index.js"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改 server.js</span></span><br><span class="line"><span class="keyword">import</span> express <span class="keyword">from</span> <span class="string">'express'</span>;</span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> &#123;renderToString&#125; = <span class="built_in">require</span>(<span class="string">'react-dom/server'</span>);</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'@/index'</span>;</span><br><span class="line">app.get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> content = renderToString(<span class="xml"><span class="tag">&lt;<span class="name">App</span>/&gt;</span></span>);</span><br><span class="line">  <span class="built_in">console</span>.log(content);</span><br><span class="line">  res.send(content);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// app.jsx</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> handleClick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">111</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;h1&gt;Page&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">            &lt;button onClick=&#123;handleClick&#125;&gt;点击&lt;/</span>button&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>npm run server 启动以后我们发现，点击按钮还是没反应的，这时候就需要执行客户端打包，引用打包出来的js代码</p>
+<p>修改如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新增webpack.client.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry:&#123;</span><br><span class="line">    index:path.resolve(__dirname,<span class="string">'../src/index.jsx'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  mode:<span class="string">'development'</span>,</span><br><span class="line">  output:&#123;</span><br><span class="line">    filename:<span class="string">'[name].js'</span>,</span><br><span class="line">    path:path.resolve(__dirname,<span class="string">'../dist/client'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  resolve:&#123;</span><br><span class="line">    alias:&#123;</span><br><span class="line">      <span class="string">'@'</span>:path.resolve(__dirname,<span class="string">'../src'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    extensions:[<span class="string">'.js'</span>, <span class="string">'.jsx'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>:&#123;</span><br><span class="line">    rules:[&#123;</span><br><span class="line">      test:<span class="regexp">/\.js|.jsx$/</span>,</span><br><span class="line">      use:<span class="string">'babel-loader'</span>,</span><br><span class="line">      exclude:<span class="regexp">/node_modules/</span></span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; hydrate &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./app'</span>;</span><br><span class="line">hydrate(<span class="xml"><span class="tag">&lt;<span class="name">App</span>/&gt;</span></span>,<span class="built_in">document</span>.getElementById(<span class="string">"root"</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改 server.js</span></span><br><span class="line"><span class="keyword">import</span> express <span class="keyword">from</span> <span class="string">'express'</span>;</span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> &#123;renderToString&#125; = <span class="built_in">require</span>(<span class="string">'react-dom/server'</span>);</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'@/App'</span>;</span><br><span class="line">app.use(express.static(<span class="string">"dist"</span>))</span><br><span class="line">app.get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> content = renderToString(<span class="xml"><span class="tag">&lt;<span class="name">App</span>/&gt;</span></span>);</span><br><span class="line">  res.send(<span class="string">`</span></span><br><span class="line"><span class="string">        &lt;!doctype html&gt;</span></span><br><span class="line"><span class="string">        &lt;html&gt;</span></span><br><span class="line"><span class="string">            &lt;title&gt;ssr&lt;/title&gt;</span></span><br><span class="line"><span class="string">            &lt;body&gt;</span></span><br><span class="line"><span class="string">                &lt;div id="root"&gt;<span class="subst">$&#123;content&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">                &lt;script src="/client/index.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">            &lt;/body&gt;</span></span><br><span class="line"><span class="string">        &lt;/html&gt;</span></span><br><span class="line"><span class="string">    `</span>);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure><br>虽然已经可以点击执行函数了，但是chrome会报一个警告：Warning: render(): Calling ReactDOM.render() to hydrate server-rendered markup will stop working in React v18. Replace the ReactDOM.render() call with ReactDOM.hydrate() if you want React to attach to the server HTML.<br>提醒我们在服务端渲染时用ReactDOM.hydrate()来取代ReactDOM.render()，并警告我们在react17时将不能用ReactDOM.render()去混合服务端渲染出来的标签。</p>
+<blockquote>
+<p>ReactDOM.render()会将挂载dom节点的所有子节点全部清空掉，再重新生成子节点。<br>ReactDOM.hydrate()则会复用挂载dom节点的子节点，并将其与react的virtualDom关联上。</p>
+</blockquote>
+<p>改下index.js代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; hydrate &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./app'</span>;</span><br><span class="line">hydrate(<span class="xml"><span class="tag">&lt;<span class="name">App</span>/&gt;</span></span>,<span class="built_in">document</span>.getElementById(<span class="string">"root"</span>));</span><br></pre></td></tr></table></figure></p>
+<p>好啦~ 以上代码已经讲解了如何最简单的实现服务端渲染。下一篇讲如何加入路由、redux等…</p>
+<p>不定期更新~~~</p>
+<p>More info: <a href="https://github.com/maimai123" target="_blank" rel="noopener">麦麦</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssr</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/15/ssr/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-doc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/20/doc/">打造自己的组件库</a>
+    </h1>
+  
+
+        
+        <a href="/2021/08/20/doc/" class="archive-article-date">
+  	<time datetime="2021-08-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用dumi+father打造一个自己的组件库</p>
+<h1 id="let’s-start"><a href="#let’s-start" class="headerlink" title="let’s start!"></a>let’s start!</h1><font size=1><strong>如有转载，请注明出处。</strong></font>
+
+<blockquote>
+<p>新建一个文件夹。然后使用脚手架初始项目</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir mars-lib &amp;&amp; cd mars-lib</span><br><span class="line"></span><br><span class="line">npx @umijs/create-dumi-lib</span><br><span class="line"># or</span><br><span class="line">yarn create @umijs/dumi-lib</span><br><span class="line"><span class="comment">// 安装依赖</span></span><br><span class="line">yarn</span><br><span class="line"></span><br><span class="line">yarn start</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>.umirc.ts 中可以修改左侧的标题 logo等信息,也可以修改themeConfig配置主题信息<br><a href="https://d.umijs.org/zh-CN/guide" target="_blank" rel="noopener">dumi文档地址</a></p>
+</blockquote>
+<p>More info: <a href="https://github.com/maimai123" target="_blank" rel="noopener">麦麦</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/08/20/doc/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-dragon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -900,201 +1098,6 @@
 
 
   
-    <article id="post-daily2020_1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/27/daily2020_1/">React Hooks</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/27/daily2020_1/" class="archive-article-date">
-  	<time datetime="2020-02-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <font size=1><strong>转载至<a href="https://juejin.im/post/5e53d9116fb9a07c9070da44" target="_blank" rel="noopener">伐樱大魔</a></strong></font>
-
-<h1 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h1><p><strong>为什么要使用useState？</strong><br>useState 的出现是 ： 在函数组件里面使用 class的setState，刺激!!!<br>解决了的问题是：当我们一个函数组件想要有自己维护的state的时候，不得已只能转换成class。这样很麻烦！</p>
-<p><strong>如何使用useState？</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [visible, setVisible] = useState(<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>useState踩坑知识点</strong></p>
-<p>👁重点： <strong>useState的初始值，只在第一次有效</strong></p>
-<p>我当时反正没有当回事，直到遇到了坑…</p>
-<p>举个🌰：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Child = memo(<span class="function">(<span class="params">&#123;data&#125;</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> [name, setName] = useState(data)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;div&gt;child&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">            &lt;div&gt;&#123;name&#125; --- &#123;data&#125;&lt;/</span>div&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Hook =()=&gt;&#123;</span></span><br><span class="line"><span class="regexp">    const [count, setCount] = useState(0)</span></span><br><span class="line"><span class="regexp">    const [name, setName] = useState('rose')</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    return(</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;</span></span><br><span class="line"><span class="regexp">            &lt;div&gt;</span></span><br><span class="line"><span class="regexp">                &#123;count&#125;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">            &lt;button onClick=&#123;()=&gt;setCount(count+<span class="number">1</span>)&#125;&gt;update count &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">            &lt;button onClick=&#123;()=&gt;setName('jack')&#125;&gt;update name &lt;/</span>button&gt;</span><br><span class="line">            &lt;Child data=&#123;name&#125;/&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>结论： 实践检验知识点！😭</p>
-</blockquote>
-<h1 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h1><p><strong>为什么要使用useEffect？</strong><br>useEffect 的出现是 ： 在函数组件里面使用 class的生命周期函数，还是所以函数的合体！刺激！！！</p>
-<p><strong>如何使用useEffect?</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// 你的代码...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p><strong>useEffect知识点合集</strong></p>
-<p>1.只在第一次使用的componentDidMount，可以用来请求异步数据…、</p>
-<p>useEffect最后，加了 <strong>[]</strong> 就表示只第一次执行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> users = 获取你喜欢的人的信息()</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
-<p>2.用来替代willUpdate等每次渲染都会执行的生命函数</p>
-<p>useEffect最后，不加 <strong>[]</strong> 就表示每一次渲染都执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> users = 每次渲染都获取你喜欢的人的信息()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><br>3.每次渲染都执行感觉有点费，所以：</p>
-<p>useEffect最后加 <strong>[]</strong> ，并且 <strong>[]</strong> 里面加的字段就表示，这个字段更改了，我这个effect才执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> users = （name改变了我才获取你喜欢的人的信息()）</span><br><span class="line">&#125;,[name])</span><br></pre></td></tr></table></figure><br>4.如果我们之前订阅了什么，最后在willUnmount这个生命周期里面要取消订阅，这可咋用useEffect实现啊：</p>
-<p>在effect的return里面可以做取消订阅的事<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> subscription = 获取你喜欢的人的信息()</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        我不要在喜欢你了()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure><br><strong>为什么要取消订阅？</strong><br>大家都知道，render了之后会执行重新useEffect，如果useEffect里面有一个每setInterval…那么每次render了，再次执行useEffect就会再创建一个setInterval，然后就混乱了…可以把下面案例return的内容删掉感受下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'use effect...'</span>,count)</span><br><span class="line">    <span class="keyword">const</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> setCount(count + <span class="number">1</span>), <span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span> clearInterval(timer)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>5.useEffect 里面使用到的state的值, 固定在了useEffect内部， 不会被改变，除非useEffect刷新，重新固定state的值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br><span class="line">   useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'use effect...'</span>,count)</span><br><span class="line">       <span class="keyword">const</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">'timer...count:'</span>, count)</span><br><span class="line">           setCount(count + <span class="number">1</span>)</span><br><span class="line">       &#125;, <span class="number">1000</span>)</span><br><span class="line">       <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span> clearInterval(timer)</span><br><span class="line">   &#125;,[])</span><br></pre></td></tr></table></figure></p>
-<p>6.useEffect不能被判断包裹</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br><span class="line">   <span class="keyword">if</span>(<span class="number">2</span> &lt; <span class="number">5</span>)&#123;</span><br><span class="line">   useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">'use effect...'</span>,count)</span><br><span class="line">           <span class="keyword">const</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> setCount(count +<span class="number">1</span>), <span class="number">1000</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span> clearInterval(timer)</span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>7.useEffect不能被打断<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br><span class="line">useEffect(...)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="comment">// 函数提前结束了</span></span><br><span class="line"></span><br><span class="line">useEffect(...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>还有<strong>useMemo</strong> <strong>useRef</strong>等等… 搬的太辛苦了，大家直接点击<a href="https://juejin.im/post/5e53d9116fb9a07c9070da44" target="_blank" rel="noopener">文章地址</a>去看吧 😭</p>
-<p>More info: <a href="maimai123.github.io">麦麦</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/27/daily2020_1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-daily2020" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/26/daily2020/">React中父组件通过ref调用子组件方法时报错</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/26/daily2020/" class="archive-article-date">
-  	<time datetime="2020-02-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <font size=1><strong>转载至<a href="https://segmentfault.com/a/1190000015172005?utm_source=channel-hottest" target="_blank" rel="noopener">风吹过的夏夜</a></strong></font>
-
-<p>在项目中用了dva，导致了在用Ref方式取子组件的方法时，用常用的方法报错<br>寻寻觅觅找到了解决方法</p>
-<p>接下来我会用一个简单的demo来演示这个问题是如何发生以及如何解决的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里是子组件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            value: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleAdd = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            value: <span class="keyword">this</span>.state.value + <span class="number">1</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;p&gt;&#123;<span class="keyword">this</span>.state.value&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Child</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里是父组件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    clickHandler = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.child.addHandler();</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">                &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">                    &lt;Child ref=&#123;ref =&gt; <span class="keyword">this</span>.child = ref&#125; /&gt;</span><br><span class="line">                    &lt;button onClick=&#123;<span class="keyword">this</span>.clickHandler&#125;&gt;+<span class="number">1</span>&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>div&gt;</span><br><span class="line">            &lt;<span class="regexp">/Provider&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default Father;</span></span><br></pre></td></tr></table></figure>
-<p>这样是没有问题了，但当子组件需要在Redux/dva（dva基于 redux 和 redux-saga）中读取的一个数据，那么就需要connect一下了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps, mapDispatchToProps)(Child)</span><br></pre></td></tr></table></figure>
-<p>嗯，看起来很完美，点击，然后….boom( ⊙ o ⊙ )报错了！</p>
-<p>不科学啊，说到这里相信大家都能猜出来事connect过后导致的问题，所以去官方文档翻箱倒柜一下connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])，<br>果不其然，原来connect参数有4个，所以可能是遗漏了某个参数吧，所以继续翻…<br>然后看到这样一段话：</p>
-<blockquote>
-<p>[withRef] (Boolean): If true, stores a ref to the wrapped component instance and makes it available via getWrappedInstance() method. Default value: false</p>
-</blockquote>
-<blockquote>
-<p>简单理解下，就是说connect过后export出去的不是组件本身，而是经过包装处理的组件，官方称之为wrapped component，所以默认是不将ref存储到这个包装对象里的(Default value: false)，因此只有将withRef这个参数置为true，那么Redux就会将ref存储到这个包装对象里以供使用了，并且请注意下via getWrappedInstance() method这段话，即便我们将withRef置为true但没有通过getWrappedInstance()获得原对象的ref(reference)也是不行的。所以说道这里大家也知道解决方案是什么了：</p>
-</blockquote>
-<blockquote>
-<p>1）connect导出Addition组件时候添加withRef参数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps, mapDispatchToProps, <span class="literal">null</span>, &#123;<span class="attr">withRef</span>: <span class="literal">true</span>&#125;)(Addition)</span><br></pre></td></tr></table></figure><br>2）调用addHandler方法前使用getWrappedInstance()获得原对象的ref：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.refs.addition.getWrappedInstance().addHandler()</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>啦啦啦~ 这样就好啦</p>
-<p>More info: <a href="maimai123.github.io">麦麦</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/26/daily2020/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1109,7 +1112,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 麦麦
+    		&copy; 2022 麦麦
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1237,6 +1240,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssr</a>
               </li>
             
             <div class="clearfix"></div>

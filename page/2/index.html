@@ -45,7 +45,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="https://tvax1.sinaimg.cn/crop.0.0.1080.1080.180/94304813ly8g0iy75xy2fj20u00u0n0a.jpg?KID=imgbed,tva&amp;Expires=1582716826&amp;ssig=74nyyHMyZV" class="js-avatar">
+			<img src="https://github.com/maimai123/hexo-source/blob/master/public/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">麦麦</a></h1>
@@ -107,7 +107,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="https://tvax1.sinaimg.cn/crop.0.0.1080.1080.180/94304813ly8g0iy75xy2fj20u00u0n0a.jpg?KID=imgbed,tva&amp;Expires=1582716826&amp;ssig=74nyyHMyZV" class="js-avatar">
+				<img src="https://github.com/maimai123/hexo-source/blob/master/public/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">麦麦</h1>
@@ -161,6 +161,201 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-daily2020_1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/27/daily2020_1/">React Hooks</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/27/daily2020_1/" class="archive-article-date">
+  	<time datetime="2020-02-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <font size=1><strong>转载至<a href="https://juejin.im/post/5e53d9116fb9a07c9070da44" target="_blank" rel="noopener">伐樱大魔</a></strong></font>
+
+<h1 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h1><p><strong>为什么要使用useState？</strong><br>useState 的出现是 ： 在函数组件里面使用 class的setState，刺激!!!<br>解决了的问题是：当我们一个函数组件想要有自己维护的state的时候，不得已只能转换成class。这样很麻烦！</p>
+<p><strong>如何使用useState？</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [visible, setVisible] = useState(<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>useState踩坑知识点</strong></p>
+<p>👁重点： <strong>useState的初始值，只在第一次有效</strong></p>
+<p>我当时反正没有当回事，直到遇到了坑…</p>
+<p>举个🌰：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Child = memo(<span class="function">(<span class="params">&#123;data&#125;</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> [name, setName] = useState(data)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;div&gt;child&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">            &lt;div&gt;&#123;name&#125; --- &#123;data&#125;&lt;/</span>div&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const Hook =()=&gt;&#123;</span></span><br><span class="line"><span class="regexp">    const [count, setCount] = useState(0)</span></span><br><span class="line"><span class="regexp">    const [name, setName] = useState('rose')</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    return(</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;</span></span><br><span class="line"><span class="regexp">            &lt;div&gt;</span></span><br><span class="line"><span class="regexp">                &#123;count&#125;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">            &lt;button onClick=&#123;()=&gt;setCount(count+<span class="number">1</span>)&#125;&gt;update count &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">            &lt;button onClick=&#123;()=&gt;setName('jack')&#125;&gt;update name &lt;/</span>button&gt;</span><br><span class="line">            &lt;Child data=&#123;name&#125;/&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结论： 实践检验知识点！😭</p>
+</blockquote>
+<h1 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h1><p><strong>为什么要使用useEffect？</strong><br>useEffect 的出现是 ： 在函数组件里面使用 class的生命周期函数，还是所以函数的合体！刺激！！！</p>
+<p><strong>如何使用useEffect?</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// 你的代码...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>useEffect知识点合集</strong></p>
+<p>1.只在第一次使用的componentDidMount，可以用来请求异步数据…、</p>
+<p>useEffect最后，加了 <strong>[]</strong> 就表示只第一次执行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> users = 获取你喜欢的人的信息()</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
+<p>2.用来替代willUpdate等每次渲染都会执行的生命函数</p>
+<p>useEffect最后，不加 <strong>[]</strong> 就表示每一次渲染都执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> users = 每次渲染都获取你喜欢的人的信息()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><br>3.每次渲染都执行感觉有点费，所以：</p>
+<p>useEffect最后加 <strong>[]</strong> ，并且 <strong>[]</strong> 里面加的字段就表示，这个字段更改了，我这个effect才执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> users = （name改变了我才获取你喜欢的人的信息()）</span><br><span class="line">&#125;,[name])</span><br></pre></td></tr></table></figure><br>4.如果我们之前订阅了什么，最后在willUnmount这个生命周期里面要取消订阅，这可咋用useEffect实现啊：</p>
+<p>在effect的return里面可以做取消订阅的事<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> subscription = 获取你喜欢的人的信息()</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        我不要在喜欢你了()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure><br><strong>为什么要取消订阅？</strong><br>大家都知道，render了之后会执行重新useEffect，如果useEffect里面有一个每setInterval…那么每次render了，再次执行useEffect就会再创建一个setInterval，然后就混乱了…可以把下面案例return的内容删掉感受下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'use effect...'</span>,count)</span><br><span class="line">    <span class="keyword">const</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> setCount(count + <span class="number">1</span>), <span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span> clearInterval(timer)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>5.useEffect 里面使用到的state的值, 固定在了useEffect内部， 不会被改变，除非useEffect刷新，重新固定state的值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br><span class="line">   useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'use effect...'</span>,count)</span><br><span class="line">       <span class="keyword">const</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">'timer...count:'</span>, count)</span><br><span class="line">           setCount(count + <span class="number">1</span>)</span><br><span class="line">       &#125;, <span class="number">1000</span>)</span><br><span class="line">       <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span> clearInterval(timer)</span><br><span class="line">   &#125;,[])</span><br></pre></td></tr></table></figure></p>
+<p>6.useEffect不能被判断包裹</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br><span class="line">   <span class="keyword">if</span>(<span class="number">2</span> &lt; <span class="number">5</span>)&#123;</span><br><span class="line">   useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">'use effect...'</span>,count)</span><br><span class="line">           <span class="keyword">const</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> setCount(count +<span class="number">1</span>), <span class="number">1000</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span> clearInterval(timer)</span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>7.useEffect不能被打断<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br><span class="line">useEffect(...)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="comment">// 函数提前结束了</span></span><br><span class="line"></span><br><span class="line">useEffect(...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>还有<strong>useMemo</strong> <strong>useRef</strong>等等… 搬的太辛苦了，大家直接点击<a href="https://juejin.im/post/5e53d9116fb9a07c9070da44" target="_blank" rel="noopener">文章地址</a>去看吧 😭</p>
+<p>More info: <a href="maimai123.github.io">麦麦</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/27/daily2020_1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-daily2020" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/26/daily2020/">React中父组件通过ref调用子组件方法时报错</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/26/daily2020/" class="archive-article-date">
+  	<time datetime="2020-02-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <font size=1><strong>转载至<a href="https://segmentfault.com/a/1190000015172005?utm_source=channel-hottest" target="_blank" rel="noopener">风吹过的夏夜</a></strong></font>
+
+<p>在项目中用了dva，导致了在用Ref方式取子组件的方法时，用常用的方法报错<br>寻寻觅觅找到了解决方法</p>
+<p>接下来我会用一个简单的demo来演示这个问题是如何发生以及如何解决的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里是子组件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            value: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleAdd = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            value: <span class="keyword">this</span>.state.value + <span class="number">1</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;p&gt;&#123;<span class="keyword">this</span>.state.value&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Child</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里是父组件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    clickHandler = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.child.addHandler();</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">                &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">                    &lt;Child ref=&#123;ref =&gt; <span class="keyword">this</span>.child = ref&#125; /&gt;</span><br><span class="line">                    &lt;button onClick=&#123;<span class="keyword">this</span>.clickHandler&#125;&gt;+<span class="number">1</span>&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>div&gt;</span><br><span class="line">            &lt;<span class="regexp">/Provider&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default Father;</span></span><br></pre></td></tr></table></figure>
+<p>这样是没有问题了，但当子组件需要在Redux/dva（dva基于 redux 和 redux-saga）中读取的一个数据，那么就需要connect一下了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps, mapDispatchToProps)(Child)</span><br></pre></td></tr></table></figure>
+<p>嗯，看起来很完美，点击，然后….boom( ⊙ o ⊙ )报错了！</p>
+<p>不科学啊，说到这里相信大家都能猜出来事connect过后导致的问题，所以去官方文档翻箱倒柜一下connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])，<br>果不其然，原来connect参数有4个，所以可能是遗漏了某个参数吧，所以继续翻…<br>然后看到这样一段话：</p>
+<blockquote>
+<p>[withRef] (Boolean): If true, stores a ref to the wrapped component instance and makes it available via getWrappedInstance() method. Default value: false</p>
+</blockquote>
+<blockquote>
+<p>简单理解下，就是说connect过后export出去的不是组件本身，而是经过包装处理的组件，官方称之为wrapped component，所以默认是不将ref存储到这个包装对象里的(Default value: false)，因此只有将withRef这个参数置为true，那么Redux就会将ref存储到这个包装对象里以供使用了，并且请注意下via getWrappedInstance() method这段话，即便我们将withRef置为true但没有通过getWrappedInstance()获得原对象的ref(reference)也是不行的。所以说道这里大家也知道解决方案是什么了：</p>
+</blockquote>
+<blockquote>
+<p>1）connect导出Addition组件时候添加withRef参数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps, mapDispatchToProps, <span class="literal">null</span>, &#123;<span class="attr">withRef</span>: <span class="literal">true</span>&#125;)(Addition)</span><br></pre></td></tr></table></figure><br>2）调用addHandler方法前使用getWrappedInstance()获得原对象的ref：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.refs.addition.getWrappedInstance().addHandler()</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>啦啦啦~ 这样就好啦</p>
+<p>More info: <a href="maimai123.github.io">麦麦</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/26/daily2020/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2019" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -686,7 +881,7 @@
 <li>git clone <a href="https://github.com/litten/hexo-theme-yilia.git" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia</li>
 </ul>
 </blockquote>
-<p>_config.yml设置如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"># Header</span><br><span class="line"></span><br><span class="line">menu:</span><br><span class="line">  主页: <span class="regexp">/</span></span><br><span class="line"><span class="regexp">  所有文章: /</span>archives/</span><br><span class="line"></span><br><span class="line"># SubNav</span><br><span class="line">subnav:</span><br><span class="line">  github: <span class="string">"https://github.com/maimai123"</span></span><br><span class="line">  weibo: <span class="string">"http://weibo.com/marsmaimai"</span></span><br><span class="line">  zhihu: <span class="string">"https://www.zhihu.com/people/yu-ya-fei-27/activities"</span></span><br><span class="line">  bilibili: <span class="string">"https://space.bilibili.com/57022459?from=search&amp;seid=2536533383147677614"</span></span><br><span class="line">  mail: <span class="string">"mailto:15867193547@163.com"</span></span><br><span class="line">  #qq: "#"</span><br><span class="line">  #weixin: "#"</span><br><span class="line">  #jianshu: "#"</span><br><span class="line">  #douban: "#"</span><br><span class="line">  #segmentfault: "#"</span><br><span class="line">  #acfun: "#"</span><br><span class="line">  #facebook: "#"</span><br><span class="line">  #google: "#"</span><br><span class="line">  #twitter: "#"</span><br><span class="line">  #linkedin: "#"</span><br><span class="line"></span><br><span class="line">rss: <span class="regexp">/atom.xml</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"># 是否需要修改 root 路径</span></span><br><span class="line"><span class="regexp"># 如果您的网站存放在子目录中，例如 http:/</span><span class="regexp">/yoursite.com/</span>blog，</span><br><span class="line"># 请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/。</span><br><span class="line">root: <span class="regexp">/</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"># Content</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"># 文章太长，截断按钮文字</span></span><br><span class="line"><span class="regexp">excerpt_link: more</span></span><br><span class="line"><span class="regexp"># 文章卡片右下角常驻链接，不需要请设置为false</span></span><br><span class="line"><span class="regexp">show_all_link: '展开全文'</span></span><br><span class="line"><span class="regexp"># 数学公式</span></span><br><span class="line"><span class="regexp">mathjax: false</span></span><br><span class="line"><span class="regexp"># 是否在新窗口打开链接</span></span><br><span class="line"><span class="regexp">open_in_new: false</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"># 打赏</span></span><br><span class="line"><span class="regexp"># 打赏type设定：0-关闭打赏； 1-文章对应的md文件里有reward:true属性，才有打赏； 2-所有文章均有打赏</span></span><br><span class="line"><span class="regexp">reward_type: 2</span></span><br><span class="line"><span class="regexp"># 打赏wording</span></span><br><span class="line"><span class="regexp">reward_wording: '谢谢你请我吃糖果'</span></span><br><span class="line"><span class="regexp"># 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/</span>assets/img/alipay.jpg</span><br><span class="line">alipay: https:<span class="comment">//github.com/maimai123/hexo-source/blob/master/source/img/zhifu.jpg?raw=true</span></span><br><span class="line"># 微信二维码图片地址</span><br><span class="line">weixin:</span><br><span class="line"></span><br><span class="line"># 目录</span><br><span class="line"># 目录设定：0-不显示目录； 1-文章对应的md文件里有toc:true属性，才有目录； 2-所有文章均显示目录</span><br><span class="line">toc: <span class="number">1</span></span><br><span class="line"># 根据自己的习惯来设置，如果你的目录标题习惯有标号，置为true即可隐藏hexo重复的序号；否则置为false</span><br><span class="line">toc_hide_index: <span class="literal">true</span></span><br><span class="line"># 目录为空时的提示</span><br><span class="line">toc_empty_wording: <span class="string">'目录，不存在的…'</span></span><br><span class="line"></span><br><span class="line"># 是否有快速回到顶部的按钮</span><br><span class="line">top: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"># Miscellaneous</span><br><span class="line">baidu_analytics: <span class="string">''</span></span><br><span class="line">google_analytics: <span class="string">''</span></span><br><span class="line">favicon: <span class="regexp">/favicon.png</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">#你的头像url</span></span><br><span class="line"><span class="regexp">avatar: https:/</span><span class="regexp">/tvax1.sinaimg.cn/</span>crop<span class="number">.0</span><span class="number">.0</span><span class="number">.1080</span><span class="number">.1080</span><span class="number">.180</span>/<span class="number">94304813</span>ly8g0iy75xy2fj20u00u0n0a.jpg?KID=imgbed,tva&amp;Expires=<span class="number">1582716826</span>&amp;ssig=<span class="number">74n</span>yyHMyZV</span><br><span class="line"></span><br><span class="line">#是否开启分享</span><br><span class="line">share_jia: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">#评论：1、多说；2、网易云跟帖；3、畅言；4、Disqus；5、Gitment</span><br><span class="line">#不需要使用某项，直接设置值为false，或注释掉</span><br><span class="line">#具体请参考wiki：https://github.com/litten/hexo-theme-yilia/wiki/</span><br><span class="line"></span><br><span class="line">#1、多说</span><br><span class="line">duoshuo: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">#2、网易云跟帖</span><br><span class="line">wangyiyun: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">#3、畅言</span><br><span class="line">changyan_appid: <span class="literal">false</span></span><br><span class="line">changyan_conf: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">#4、Disqus 在hexo根目录的config里也有disqus_shortname字段，优先使用yilia的</span><br><span class="line">disqus: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">#5、Gitment</span><br><span class="line">gitment_owner: false      #你的 GitHub ID</span><br><span class="line">gitment_repo: ''          #存储评论的 repo</span><br><span class="line">gitment_oauth:</span><br><span class="line">  client_id: ''           #client ID</span><br><span class="line">  client_secret: ''       #client secret</span><br><span class="line"></span><br><span class="line"># 样式定制 - 一般不需要修改，除非有很强的定制欲望…</span><br><span class="line">style:</span><br><span class="line">  # 头像上面的背景颜色</span><br><span class="line">  header: <span class="string">'#4d4d4d'</span></span><br><span class="line">  # 右滑板块背景</span><br><span class="line">  slider: <span class="string">'linear-gradient(200deg,#a0cfe4,#e8c37e)'</span></span><br><span class="line"></span><br><span class="line"># slider的设置</span><br><span class="line">slider:</span><br><span class="line">  showTags: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"># 智能菜单</span><br><span class="line"># 如不需要，将该对应项置为false</span><br><span class="line"># 比如</span><br><span class="line">#smart_menu:</span><br><span class="line">#  friends: false</span><br><span class="line">smart_menu:</span><br><span class="line">  innerArchive: <span class="string">'点我搜文章'</span></span><br><span class="line">  friends: <span class="string">'友链'</span></span><br><span class="line">  aboutme: <span class="string">'关于我'</span></span><br><span class="line"></span><br><span class="line">friends:</span><br><span class="line">  小雷的博客: http:<span class="comment">//www.leridy.pw</span></span><br><span class="line">  麦麦的博客: https:<span class="comment">//www.marsmai.club/</span></span><br><span class="line">  李逵的博客: https:<span class="comment">//www.lcckup.com</span></span><br><span class="line"></span><br><span class="line">aboutme: 很惭愧&lt;br&gt;&lt;br&gt;很久没写博客了&lt;br&gt;谢谢你还能来逛逛</span><br></pre></td></tr></table></figure></p>
+<p>_config.yml设置如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"># Header</span><br><span class="line"></span><br><span class="line">menu:</span><br><span class="line">  主页: <span class="regexp">/</span></span><br><span class="line"><span class="regexp">  所有文章: /</span>archives/</span><br><span class="line"></span><br><span class="line"># SubNav</span><br><span class="line">subnav:</span><br><span class="line">  github: <span class="string">"https://github.com/maimai123"</span></span><br><span class="line">  weibo: <span class="string">"http://weibo.com/marsmaimai"</span></span><br><span class="line">  zhihu: <span class="string">"https://www.zhihu.com/people/yu-ya-fei-27/activities"</span></span><br><span class="line">  bilibili: <span class="string">"https://space.bilibili.com/57022459?from=search&amp;seid=2536533383147677614"</span></span><br><span class="line">  mail: <span class="string">"mailto:15867193547@163.com"</span></span><br><span class="line">  #qq: "#"</span><br><span class="line">  #weixin: "#"</span><br><span class="line">  #jianshu: "#"</span><br><span class="line">  #douban: "#"</span><br><span class="line">  #segmentfault: "#"</span><br><span class="line">  #acfun: "#"</span><br><span class="line">  #facebook: "#"</span><br><span class="line">  #google: "#"</span><br><span class="line">  #twitter: "#"</span><br><span class="line">  #linkedin: "#"</span><br><span class="line"></span><br><span class="line">rss: <span class="regexp">/atom.xml</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"># 是否需要修改 root 路径</span></span><br><span class="line"><span class="regexp"># 如果您的网站存放在子目录中，例如 http:/</span><span class="regexp">/yoursite.com/</span>blog，</span><br><span class="line"># 请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/。</span><br><span class="line">root: <span class="regexp">/</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"># Content</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"># 文章太长，截断按钮文字</span></span><br><span class="line"><span class="regexp">excerpt_link: more</span></span><br><span class="line"><span class="regexp"># 文章卡片右下角常驻链接，不需要请设置为false</span></span><br><span class="line"><span class="regexp">show_all_link: '展开全文'</span></span><br><span class="line"><span class="regexp"># 数学公式</span></span><br><span class="line"><span class="regexp">mathjax: false</span></span><br><span class="line"><span class="regexp"># 是否在新窗口打开链接</span></span><br><span class="line"><span class="regexp">open_in_new: false</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"># 打赏</span></span><br><span class="line"><span class="regexp"># 打赏type设定：0-关闭打赏； 1-文章对应的md文件里有reward:true属性，才有打赏； 2-所有文章均有打赏</span></span><br><span class="line"><span class="regexp">reward_type: 2</span></span><br><span class="line"><span class="regexp"># 打赏wording</span></span><br><span class="line"><span class="regexp">reward_wording: '谢谢你请我吃糖果'</span></span><br><span class="line"><span class="regexp"># 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/</span>assets/img/alipay.jpg</span><br><span class="line">alipay: https:<span class="comment">//github.com/maimai123/hexo-source/blob/master/source/img/zhifu.jpg?raw=true</span></span><br><span class="line"># 微信二维码图片地址</span><br><span class="line">weixin:</span><br><span class="line"></span><br><span class="line"># 目录</span><br><span class="line"># 目录设定：0-不显示目录； 1-文章对应的md文件里有toc:true属性，才有目录； 2-所有文章均显示目录</span><br><span class="line">toc: <span class="number">1</span></span><br><span class="line"># 根据自己的习惯来设置，如果你的目录标题习惯有标号，置为true即可隐藏hexo重复的序号；否则置为false</span><br><span class="line">toc_hide_index: <span class="literal">true</span></span><br><span class="line"># 目录为空时的提示</span><br><span class="line">toc_empty_wording: <span class="string">'目录，不存在的…'</span></span><br><span class="line"></span><br><span class="line"># 是否有快速回到顶部的按钮</span><br><span class="line">top: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"># Miscellaneous</span><br><span class="line">baidu_analytics: <span class="string">''</span></span><br><span class="line">google_analytics: <span class="string">''</span></span><br><span class="line">favicon: <span class="regexp">/favicon.png</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">#你的头像url</span></span><br><span class="line"><span class="regexp">avatar: https:/</span><span class="regexp">/github.com/m</span>aimai123/hexo-source/blob/master/public/img/avatar.jpg</span><br><span class="line"></span><br><span class="line">#是否开启分享</span><br><span class="line">share_jia: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">#评论：1、多说；2、网易云跟帖；3、畅言；4、Disqus；5、Gitment</span><br><span class="line">#不需要使用某项，直接设置值为false，或注释掉</span><br><span class="line">#具体请参考wiki：https://github.com/litten/hexo-theme-yilia/wiki/</span><br><span class="line"></span><br><span class="line">#1、多说</span><br><span class="line">duoshuo: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">#2、网易云跟帖</span><br><span class="line">wangyiyun: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">#3、畅言</span><br><span class="line">changyan_appid: <span class="literal">false</span></span><br><span class="line">changyan_conf: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">#4、Disqus 在hexo根目录的config里也有disqus_shortname字段，优先使用yilia的</span><br><span class="line">disqus: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">#5、Gitment</span><br><span class="line">gitment_owner: false      #你的 GitHub ID</span><br><span class="line">gitment_repo: ''          #存储评论的 repo</span><br><span class="line">gitment_oauth:</span><br><span class="line">  client_id: ''           #client ID</span><br><span class="line">  client_secret: ''       #client secret</span><br><span class="line"></span><br><span class="line"># 样式定制 - 一般不需要修改，除非有很强的定制欲望…</span><br><span class="line">style:</span><br><span class="line">  # 头像上面的背景颜色</span><br><span class="line">  header: <span class="string">'#4d4d4d'</span></span><br><span class="line">  # 右滑板块背景</span><br><span class="line">  slider: <span class="string">'linear-gradient(200deg,#a0cfe4,#e8c37e)'</span></span><br><span class="line"></span><br><span class="line"># slider的设置</span><br><span class="line">slider:</span><br><span class="line">  showTags: <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"># 智能菜单</span><br><span class="line"># 如不需要，将该对应项置为false</span><br><span class="line"># 比如</span><br><span class="line">#smart_menu:</span><br><span class="line">#  friends: false</span><br><span class="line">smart_menu:</span><br><span class="line">  innerArchive: <span class="string">'点我搜文章'</span></span><br><span class="line">  friends: <span class="string">'友链'</span></span><br><span class="line">  aboutme: <span class="string">'关于我'</span></span><br><span class="line"></span><br><span class="line">friends:</span><br><span class="line">  小雷的博客: http:<span class="comment">//www.leridy.pw</span></span><br><span class="line">  麦麦的博客: https:<span class="comment">//www.marsmai.club/</span></span><br><span class="line">  李逵的博客: https:<span class="comment">//www.lcckup.com</span></span><br><span class="line"></span><br><span class="line">aboutme: 很惭愧&lt;br&gt;&lt;br&gt;很久没写博客了&lt;br&gt;谢谢你还能来逛逛</span><br></pre></td></tr></table></figure></p>
 <p>More info: <a href="maimai123.github.io">麦麦</a></p>
 
       
@@ -826,168 +1021,6 @@
 
 
   
-    <article id="post-chaping" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/05/chaping/">进入差评后的小笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/05/chaping/" class="archive-article-date">
-  	<time datetime="2018-02-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>啦啦啦啦啦啦~</p>
-<p><font size=1><strong>如有转载，请注明出处。</strong></font></p>
-<h2 id="Intersting"><a href="#Intersting" class="headerlink" title="Intersting"></a>Intersting</h2><h2 id="1、Vue-filter-过滤"><a href="#1、Vue-filter-过滤" class="headerlink" title="1、Vue.filter 过滤"></a>1、Vue.filter 过滤</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">filterShoppingList: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> key = <span class="keyword">this</span>.key;</span><br><span class="line">    <span class="keyword">var</span> shoppingList = <span class="keyword">this</span>.shoppingList;</span><br><span class="line">    <span class="keyword">return</span> shoppingList.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> item.toLowerCase().indexOf(key.toLowerCase()) != <span class="number">-1</span></span><br><span class="line">    &#125;);;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2、数组对象去重（根据时间一样去重，把title合并）"><a href="#2、数组对象去重（根据时间一样去重，把title合并）" class="headerlink" title="2、数组对象去重（根据时间一样去重，把title合并）"></a>2、数组对象去重（根据时间一样去重，把title合并）</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [</span><br><span class="line">  &#123;</span><br><span class="line">    time:<span class="string">'211521'</span>,</span><br><span class="line">    title:[</span><br><span class="line">      <span class="string">'111111111111111'</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    time:<span class="string">'23333333333'</span>,</span><br><span class="line">    title:[</span><br><span class="line">      <span class="string">'我有一只小毛驴'</span>,</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    time:<span class="string">'23333333333'</span>,</span><br><span class="line">    title:[</span><br><span class="line">      <span class="string">'我重来也不骑'</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    time:<span class="string">'23333333333'</span>,</span><br><span class="line">    title:[</span><br><span class="line">      <span class="string">'有一天我心血来潮'</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    time:<span class="string">'23werwef3'</span>,</span><br><span class="line">    title:[</span><br><span class="line">      <span class="string">'111111111111111'</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">var</span> result = [], hash = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;arr.length; i++) &#123; <span class="comment">//去重</span></span><br><span class="line">  <span class="keyword">var</span> elem = arr[i].time;</span><br><span class="line">  <span class="keyword">if</span> (!hash[elem]) &#123;</span><br><span class="line">      result.push(arr[i]);</span><br><span class="line">      hash[elem] = <span class="literal">true</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j&lt;result.length; j++) &#123; <span class="comment">//填数据</span></span><br><span class="line">      <span class="keyword">if</span>(result[j].time == elem)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(arr[i].title)</span><br><span class="line">        result[j].title.push(arr[i].title[<span class="number">0</span>])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/02/05/chaping/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/05/chaping/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-react-daily" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/30/react-daily/">react日常小难题整理</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/30/react-daily/" class="archive-article-date">
-  	<time datetime="2017-12-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>初学react，在码代码过程中会遇到对大牛来说听起来愚蠢的问题。没错！这篇文章就是来整理这些愚蠢的问题的~ （嘿嘿嘿）下次可不要再丢人啦~</p>
-<p><font size=1><strong>如有转载，请注明出处。</strong></font></p>
-<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h2 id="1、style问题在react中"><a href="#1、style问题在react中" class="headerlink" title="1、style问题在react中"></a>1、style问题在react中</h2><blockquote>
-<p>大兄弟~ 你是否想在react中使用行内样式<br>如： style=”height:30px”<br>然后你仰望星空 然后你开始怀疑自己，难道是我写错了？哈哈 其实是在react中的写法不太一样而已~~~<br>看！写成这样就没错列~<br><img src="https://github.com/maimai123/maimai123.github.io/blob/master/img/style.png?raw=true" /></p>
-</blockquote>
-<h2 id="2、从后台拿到数组遍历成字符串类型的标签，如何被浏览器识别"><a href="#2、从后台拿到数组遍历成字符串类型的标签，如何被浏览器识别" class="headerlink" title="2、从后台拿到数组遍历成字符串类型的标签，如何被浏览器识别"></a>2、从后台拿到数组遍历成字符串类型的标签，如何被浏览器识别</h2><blockquote>
-<p>在用antd表格的时候，我曾遇到过这个问题。后台传过来的是数组，遍历成n个带url的a标签 显示在表格的操作栏<br>一开始我先将数组遍历加入字符串a标签放入一个新数组 最后将此数组转成字符串 return出去变成了字符串 没有被浏览器识别 看下图<br><img src="https://github.com/maimai123/maimai123.github.io/blob/master/img/return.png?raw=true" /><br>后来找到了解决方法 如下 (ps:千万不要忘了给数组加上key，否则控制台会提示哦)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> files.map(<span class="function">(<span class="params">file,index</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;<span class="name">Icon</span> <span class="attr">type</span>=<span class="string">"paper-clip"</span> /&gt;</span> &#123;file&#125; <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/12/30/react-daily/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/30/react-daily/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1002,7 +1035,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 麦麦
+    		&copy; 2022 麦麦
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1130,6 +1163,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssr</a>
               </li>
             
             <div class="clearfix"></div>
